@@ -1,5 +1,4 @@
 ﻿using ABCDMall.Models;
-using ABCDMall.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +14,6 @@ namespace ABCDMall.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.str = Hash.GetHash("abcdmallonline");
             return View();
         }
 

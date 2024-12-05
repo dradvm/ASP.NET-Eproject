@@ -7,7 +7,7 @@ using System.Web;
 
 namespace ABCDMall.Services
 {
-    public class Hash
+    public class HashService
     {
         public static string GetHash(string str)
         {
