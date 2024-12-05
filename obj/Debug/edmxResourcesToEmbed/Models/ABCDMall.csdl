@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ABCDMallModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cinema">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Seats" Relationship="Self.FK__Seat__Cinema__4D94879B" FromRole="Cinema" ToRole="Seat" />
+    <NavigationProperty Name="Showtimes" Relationship="Self.FK__Showtime__Cinema__5629CD9C" FromRole="Cinema" ToRole="Showtime" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SendingTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Content" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Floor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Shops" Relationship="Self.FK__Shop__Floor__4222D4EF" FromRole="Floor" ToRole="Shop" />
+  </EntityType>
+  <EntityType Name="Gallery">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Genre">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Movies" Relationship="Self.MovieGenre" FromRole="Genre" ToRole="Movie" />
+  </EntityType>
+  <EntityType Name="Movie">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Duration" Type="Int32" Nullable="false" />
+    <Property Name="RealeaseDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Director" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Showtimes" Relationship="Self.FK__Showtime__Movie__571DF1D5" FromRole="Movie" ToRole="Showtime" />
+    <NavigationProperty Name="Genres" Relationship="Self.MovieGenre" FromRole="Movie" ToRole="Genre" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Shop" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Shop1" Relationship="Self.FK__Product__Shop__44FF419A" FromRole="Product" ToRole="Shop" />
+  </EntityType>
+  <EntityType Name="Seat">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cinema" Type="Int32" Nullable="false" />
+    <Property Name="SeatType" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cinema1" Relationship="Self.FK__Seat__Cinema__4D94879B" FromRole="Seat" ToRole="Cinema" />
+    <NavigationProperty Name="SeatType1" Relationship="Self.FK__Seat__SeatType__4E88ABD4" FromRole="Seat" ToRole="SeatType" />
+    <NavigationProperty Name="Tickets" Relationship="Self.FK__Ticket__Seat__5AEE82B9" FromRole="Seat" ToRole="Ticket" />
+  </EntityType>
+  <EntityType Name="SeatType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Seats" Relationship="Self.FK__Seat__SeatType__4E88ABD4" FromRole="SeatType" ToRole="Seat" />
+  </EntityType>
+  <EntityType Name="Shop">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShopeType" Type="Int32" Nullable="false" />
+    <Property Name="Floor" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Logo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Floor1" Relationship="Self.FK__Shop__Floor__4222D4EF" FromRole="Shop" ToRole="Floor" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Product__Shop__44FF419A" FromRole="Shop" ToRole="Product" />
+    <NavigationProperty Name="ShopType" Relationship="Self.FK__Shop__ShopeType__412EB0B6" FromRole="Shop" ToRole="ShopType" />
+  </EntityType>
+  <EntityType Name="ShopType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Shops" Relationship="Self.FK__Shop__ShopeType__412EB0B6" FromRole="ShopType" ToRole="Shop" />
+  </EntityType>
+  <EntityType Name="Showtime">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cinema" Type="Int32" Nullable="false" />
+    <Property Name="Movie" Type="Int32" Nullable="false" />
+    <Property Name="StartingTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndingTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Cinema1" Relationship="Self.FK__Showtime__Cinema__5629CD9C" FromRole="Showtime" ToRole="Cinema" />
+    <NavigationProperty Name="Movie1" Relationship="Self.FK__Showtime__Movie__571DF1D5" FromRole="Showtime" ToRole="Movie" />
+    <NavigationProperty Name="Tickets" Relationship="Self.FK__Ticket__Showtime__5BE2A6F2" FromRole="Showtime" ToRole="Ticket" />
+  </EntityType>
+  <EntityType Name="Ticket">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Seat" Type="Int32" />
+    <Property Name="Showtime" Type="Int32" />
+    <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CustomerEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="PaymentTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Seat1" Relationship="Self.FK__Ticket__Seat__5AEE82B9" FromRole="Ticket" ToRole="Seat" />
+    <NavigationProperty Name="Showtime1" Relationship="Self.FK__Ticket__Showtime__5BE2A6F2" FromRole="Ticket" ToRole="Showtime" />
+  </EntityType>
+  <Association Name="FK__Seat__Cinema__4D94879B">
+    <End Role="Cinema" Type="Self.Cinema" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Seat" Type="Self.Seat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cinema">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Seat">
+        <PropertyRef Name="Cinema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Showtime__Cinema__5629CD9C">
+    <End Role="Cinema" Type="Self.Cinema" Multiplicity="1" />
+    <End Role="Showtime" Type="Self.Showtime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cinema">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Showtime">
+        <PropertyRef Name="Cinema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Shop__Floor__4222D4EF">
+    <End Role="Floor" Type="Self.Floor" Multiplicity="1" />
+    <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Floor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Shop">
+        <PropertyRef Name="Floor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Showtime__Movie__571DF1D5">
+    <End Role="Movie" Type="Self.Movie" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Showtime" Type="Self.Showtime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movie">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Showtime">
+        <PropertyRef Name="Movie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Shop__44FF419A">
+    <End Role="Shop" Type="Self.Shop" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shop">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Shop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Seat__SeatType__4E88ABD4">
+    <End Role="SeatType" Type="Self.SeatType" Multiplicity="1" />
+    <End Role="Seat" Type="Self.Seat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SeatType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Seat">
+        <PropertyRef Name="SeatType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ticket__Seat__5AEE82B9">
+    <End Role="Seat" Type="Self.Seat" Multiplicity="0..1" />
+    <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seat">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="Seat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Shop__ShopeType__412EB0B6">
+    <End Role="ShopType" Type="Self.ShopType" Multiplicity="1" />
+    <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Shop">
+        <PropertyRef Name="ShopeType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ticket__Showtime__5BE2A6F2">
+    <End Role="Showtime" Type="Self.Showtime" Multiplicity="0..1" />
+    <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Showtime">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="Showtime" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MovieGenre">
+    <End Role="Genre" Type="Self.Genre" Multiplicity="*" />
+    <End Role="Movie" Type="Self.Movie" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="ABCDMallEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Cinemas" EntityType="Self.Cinema" />
+    <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+    <EntitySet Name="Floors" EntityType="Self.Floor" />
+    <EntitySet Name="Galleries" EntityType="Self.Gallery" />
+    <EntitySet Name="Genres" EntityType="Self.Genre" />
+    <EntitySet Name="Movies" EntityType="Self.Movie" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Seats" EntityType="Self.Seat" />
+    <EntitySet Name="SeatTypes" EntityType="Self.SeatType" />
+    <EntitySet Name="Shops" EntityType="Self.Shop" />
+    <EntitySet Name="ShopTypes" EntityType="Self.ShopType" />
+    <EntitySet Name="Showtimes" EntityType="Self.Showtime" />
+    <EntitySet Name="Tickets" EntityType="Self.Ticket" />
+    <AssociationSet Name="FK__Seat__Cinema__4D94879B" Association="Self.FK__Seat__Cinema__4D94879B">
+      <End Role="Cinema" EntitySet="Cinemas" />
+      <End Role="Seat" EntitySet="Seats" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Showtime__Cinema__5629CD9C" Association="Self.FK__Showtime__Cinema__5629CD9C">
+      <End Role="Cinema" EntitySet="Cinemas" />
+      <End Role="Showtime" EntitySet="Showtimes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Shop__Floor__4222D4EF" Association="Self.FK__Shop__Floor__4222D4EF">
+      <End Role="Floor" EntitySet="Floors" />
+      <End Role="Shop" EntitySet="Shops" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Showtime__Movie__571DF1D5" Association="Self.FK__Showtime__Movie__571DF1D5">
+      <End Role="Movie" EntitySet="Movies" />
+      <End Role="Showtime" EntitySet="Showtimes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Shop__44FF419A" Association="Self.FK__Product__Shop__44FF419A">
+      <End Role="Shop" EntitySet="Shops" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Seat__SeatType__4E88ABD4" Association="Self.FK__Seat__SeatType__4E88ABD4">
+      <End Role="SeatType" EntitySet="SeatTypes" />
+      <End Role="Seat" EntitySet="Seats" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ticket__Seat__5AEE82B9" Association="Self.FK__Ticket__Seat__5AEE82B9">
+      <End Role="Seat" EntitySet="Seats" />
+      <End Role="Ticket" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Shop__ShopeType__412EB0B6" Association="Self.FK__Shop__ShopeType__412EB0B6">
+      <End Role="ShopType" EntitySet="ShopTypes" />
+      <End Role="Shop" EntitySet="Shops" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ticket__Showtime__5BE2A6F2" Association="Self.FK__Ticket__Showtime__5BE2A6F2">
+      <End Role="Showtime" EntitySet="Showtimes" />
+      <End Role="Ticket" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="MovieGenre" Association="Self.MovieGenre">
+      <End Role="Genre" EntitySet="Genres" />
+      <End Role="Movie" EntitySet="Movies" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

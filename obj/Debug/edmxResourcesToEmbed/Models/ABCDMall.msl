@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ABCDMallModelStoreContainer" CdmEntityContainer="ABCDMallEntities">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="ABCDMallModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cinemas">
+      <EntityTypeMapping TypeName="ABCDMallModel.Cinema">
+        <MappingFragment StoreEntitySet="Cinema">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feedbacks">
+      <EntityTypeMapping TypeName="ABCDMallModel.Feedback">
+        <MappingFragment StoreEntitySet="Feedback">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SendingTime" ColumnName="SendingTime" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Floors">
+      <EntityTypeMapping TypeName="ABCDMallModel.Floor">
+        <MappingFragment StoreEntitySet="Floor">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Galleries">
+      <EntityTypeMapping TypeName="ABCDMallModel.Gallery">
+        <MappingFragment StoreEntitySet="Gallery">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Genres">
+      <EntityTypeMapping TypeName="ABCDMallModel.Genre">
+        <MappingFragment StoreEntitySet="Genre">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Movies">
+      <EntityTypeMapping TypeName="ABCDMallModel.Movie">
+        <MappingFragment StoreEntitySet="Movie">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="RealeaseDate" ColumnName="RealeaseDate" />
+          <ScalarProperty Name="Director" ColumnName="Director" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="ABCDMallModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Shop" ColumnName="Shop" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seats">
+      <EntityTypeMapping TypeName="ABCDMallModel.Seat">
+        <MappingFragment StoreEntitySet="Seat">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Cinema" ColumnName="Cinema" />
+          <ScalarProperty Name="SeatType" ColumnName="SeatType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeatTypes">
+      <EntityTypeMapping TypeName="ABCDMallModel.SeatType">
+        <MappingFragment StoreEntitySet="SeatType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shops">
+      <EntityTypeMapping TypeName="ABCDMallModel.Shop">
+        <MappingFragment StoreEntitySet="Shop">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ShopeType" ColumnName="ShopeType" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopTypes">
+      <EntityTypeMapping TypeName="ABCDMallModel.ShopType">
+        <MappingFragment StoreEntitySet="ShopType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Showtimes">
+      <EntityTypeMapping TypeName="ABCDMallModel.Showtime">
+        <MappingFragment StoreEntitySet="Showtime">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Cinema" ColumnName="Cinema" />
+          <ScalarProperty Name="Movie" ColumnName="Movie" />
+          <ScalarProperty Name="StartingTime" ColumnName="StartingTime" />
+          <ScalarProperty Name="EndingTime" ColumnName="EndingTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tickets">
+      <EntityTypeMapping TypeName="ABCDMallModel.Ticket">
+        <MappingFragment StoreEntitySet="Ticket">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Seat" ColumnName="Seat" />
+          <ScalarProperty Name="Showtime" ColumnName="Showtime" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="PaymentTime" ColumnName="PaymentTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="MovieGenre" TypeName="ABCDMallModel.MovieGenre" StoreEntitySet="MovieGenre">
+      <EndProperty Name="Genre">
+        <ScalarProperty Name="ID" ColumnName="Genre" />
+      </EndProperty>
+      <EndProperty Name="Movie">
+        <ScalarProperty Name="ID" ColumnName="Movie" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
