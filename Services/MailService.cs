@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
+﻿using System.Net.Mail;
 using System.Net;
-using System.Web;
+using System.Configuration;
 
 namespace ABCDMall.Services
 {
     public class MailService
     {
-        private const string EMAIL = "plateportal@gmail.com";
-        private const string PASSWORD = "ppkedxfqgtlbgpie";
+        private static readonly string EMAIL = ConfigurationManager.AppSettings["email"];
+        private static readonly string PASSWORD = ConfigurationManager.AppSettings["password"];
         private static readonly SmtpClient SMTP = new SmtpClient()
         {
             Host = "smtp.gmail.com",

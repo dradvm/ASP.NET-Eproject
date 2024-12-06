@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Layout/Header.cshtml";
+}
+
+<form action="/admin/login" method="post">
+    <label for="email">Email:</label>
+    <input name="email" required />
+    <label for="password">Password:</label>
+    <input name="password" type="password" required />
+    @if (ViewBag.Status == 0)
+    {
+        <div>Incorrect username or password</div>
+    }
+    <button type="submit">Log in</button>
+</form>
+

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Configuration;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
@@ -10,11 +11,11 @@ namespace ABCDMall.Services
 {
     public class VNPayService
     {
-        private const string VNP_URL = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        private const string VNP_API = "https://sandbox.vnpayment.vn/merchant_webapi/api/transaction";
-        private const string VNP_TMNCODE = "2RDWW88S";
-        private const string VNP_HASHSECRET = "HEEGEFUX3RADHE6D7JCLXMQVHPNL7CZC";
-        private const string VNP_VERSION = "2.1.0";
+        private static readonly string VNP_URL = ConfigurationManager.AppSettings["vnp_url"];
+        private static readonly string VNP_API = ConfigurationManager.AppSettings["vnp_api"];
+        private static readonly string VNP_TMNCODE = ConfigurationManager.AppSettings["vnp_tmncode"];
+        private static readonly string VNP_HASHSECRET = ConfigurationManager.AppSettings["vnp_hashsecret"];
+        private static readonly string VNP_VERSION = ConfigurationManager.AppSettings["vnp_version"];
         private SortedList<String, String> _requestData = new SortedList<String, String>(new VnPayCompare());
         private SortedList<String, String> _responseData = new SortedList<String, String>(new VnPayCompare());
 

@@ -127,7 +127,7 @@ create table MovieGenre
 
 insert into [Admin]
 values
-	('abcdmallonline@gmail.com', 'E621F5899D5FB459E346F84BAC5A6B771921F3848C69742AA3D59E9075DE8392') --abcdmallonline
+	('plateportal@gmail.com', '70DA09DC10089B114D7863F0BF9A5AA9CF5A6BDB5C92E35352038F131753DAEA') --plateportaladmin
 
 insert into ShopType
 values

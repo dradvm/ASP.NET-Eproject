@@ -1,5 +1,6 @@
 ﻿using ABCDMall.Models;
 using ABCDMall.Services;
+using System.Configuration;
 using System.Web.Mvc;
 
 namespace ABCDMall.Controllers
@@ -7,7 +8,7 @@ namespace ABCDMall.Controllers
     public class HomeController : Controller
     {
         //Khởi tạo DBContext
-        private ABCDMallEntities db = new ABCDMallEntities();
+        private readonly ABCDMallEntities db = new ABCDMallEntities();
 
         public ActionResult Index()
         {
@@ -19,7 +20,7 @@ namespace ABCDMall.Controllers
         {
             VNPayService vnp = new VNPayService();
             //Truyền số tiền cần thanh toán, nội dung thanh toán, URL trả về
-            return Redirect(vnp.CreateRequestUrl(100000, "Test", "http://localhost:59552/home/testresult"));
+            return Redirect(vnp.CreateRequestUrl(100000, "Test", ConfigurationManager.AppSettings["weburl"] + "/home/testresult"));
         }
 
         //Test xử lý kết quả thanh toán
