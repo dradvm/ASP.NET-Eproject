@@ -97,6 +97,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Images\Gallery\noi-chien.png" />
+    <Content Include="Assets\Images\Gallery\pnjsilver-ztxmw060007.png" />
+    <Content Include="Assets\Images\Gallery\WMNS+AIR+JORDAN+1+LOW.png" />
+    <Content Include="Assets\Images\Movie\350x495-meoma.jpg" />
+    <Content Include="Assets\Images\Movie\cgv_1200x1800.jpg" />
+    <Content Include="Assets\Images\Movie\poster_ngay_ta_da_yeu_6.jpg" />
+    <Content Include="Assets\Images\Movie\rsz_vnm3_intl_online_1080x1350_tsr_01.jpg" />
+    <Content Include="Assets\Images\Movie\vn_mncrft_vert_tsr2_2764x4096_intl.jpg" />
+    <Content Include="Assets\Images\Product\54d1040569d8ce8697c9_1.jpg" />
+    <Content Include="Assets\Images\Product\binh-gi-nhi-t-lock-lock-colorful-tumbler-lhc3222pik-390ml-h-ng.jpg" />
+    <Content Include="Assets\Images\Product\g_gi_n_vui_v_-_1_1.png" />
+    <Content Include="Assets\Images\Product\m_jolly_-_2-compressed.jpg" />
+    <Content Include="Assets\Images\Product\noi-chien.png" />
+    <Content Include="Assets\Images\Product\pnjsilver-ztxmw060007.png" />
+    <Content Include="Assets\Images\Product\WMNS+AIR+JORDAN+1+LOW.png" />
+    <Content Include="Assets\Images\Shop\09314542_logo-jollibee-500x500-1-401x400.jpg" />
+    <Content Include="Assets\Images\Shop\14514819_LOGO-THE-PIZZA-COMPANY-500x500-1-400x400.jpg" />
+    <Content Include="Assets\Images\Shop\cafe-highland.png" />
+    <Content Include="Assets\Images\Shop\locknlock.svg" />
+    <Content Include="Assets\Images\Shop\Logo_NIKE.svg.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -130,6 +150,14 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Assets\Images\Gallery\Hwansaenggo.webp" />
+    <Content Include="Assets\Images\Gallery\MDV-107-1A3V.webp" />
+    <Content Include="Assets\Images\Product\fa4f5004-9bb6-4902-91e1-2bec1cc40610.webp" />
+    <Content Include="Assets\Images\Product\Hwansaenggo.webp" />
+    <Content Include="Assets\Images\Product\MDV-107-1A3V.webp" />
+    <Content Include="Assets\Images\Shop\85ba6666-85aa-43a5-8c30-a474210a6c38.webp" />
+    <Content Include="Assets\Images\Shop\logo_casio_g_store.webp" />
+    <Content Include="Assets\Images\Shop\pnj.webp" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
