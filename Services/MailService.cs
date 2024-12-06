@@ -9,9 +9,9 @@ namespace ABCDMall.Services
 {
     public class MailService
     {
-        private static readonly string EMAIL = "plateportal@gmail.com";
-        private static readonly string PASSWORD = "ppkedxfqgtlbgpie";
-        private static readonly SmtpClient smtpClient = new SmtpClient()
+        private const string EMAIL = "plateportal@gmail.com";
+        private const string PASSWORD = "ppkedxfqgtlbgpie";
+        private static readonly SmtpClient SMTP = new SmtpClient()
         {
             Host = "smtp.gmail.com",
             Port = 587,
@@ -31,7 +31,7 @@ namespace ABCDMall.Services
                 IsBodyHtml = true
             })
             {
-                smtpClient.Send(mailMessage);
+                SMTP.Send(mailMessage);
             }
         }
     }

@@ -1,8 +1,5 @@
 ﻿using ABCDMall.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using ABCDMall.Services;
 using System.Web.Mvc;
 
 namespace ABCDMall.Controllers
@@ -14,6 +11,23 @@ namespace ABCDMall.Controllers
 
         public ActionResult Index()
         {
+            return View();
+        }
+
+        //Test thanh toán
+        public ActionResult TestPayment()
+        {
+            VNPayService vnp = new VNPayService();
+            //Truyền số tiền cần thanh toán, nội dung thanh toán, URL trả về
+            return Redirect(vnp.CreateRequestUrl(100000, "Test", "http://localhost:59552/home/testresult"));
+        }
+
+        //Test xử lý kết quả thanh toán
+        public ActionResult TestResult()
+        {
+            VNPayService vnp = new VNPayService();
+            //True nếu thanh toán thành công, False nếu ngược lại
+            ViewBag.Status = vnp.ValidateSignature(Request);
             return View();
         }
 
