@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Send Feedback";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+<form action="/feedback/send" method="post">
+    <label for="email">Email (optional): </label>
+    <input name="email" type="email" />
+    <label for="content">Content: </label>
+    <textarea name="content" required></textarea>
+    @if (ViewBag.status == -1)
+    {
+        <div>Invalid email</div>
+    }
+    else if (ViewBag.status == 0)
+    {
+        <div>Feedback content must be filled</div>
+    }
+    else if (ViewBag.status == 2)
+    {
+        <div>Your feedback has been sent</div>
+    }
+    <button type="submit">Send</button>
+</form>
+

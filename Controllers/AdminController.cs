@@ -12,7 +12,7 @@ namespace ABCDMall.Controllers
 
         public ActionResult Login(int status = 1)
         {
-            ViewBag.Status = status;
+            ViewBag.status = status;
             return View();
         }
 

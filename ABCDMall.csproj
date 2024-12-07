@@ -101,7 +101,7 @@
     <Content Include="Assets\Images\Gallery\MDV-107-1A3V.png" />
     <Content Include="Assets\Images\Gallery\noi-chien.png" />
     <Content Include="Assets\Images\Gallery\pnjsilver-ztxmw060007.png" />
-    <Content Include="Assets\Images\Gallery\WMNS+AIR+JORDAN+1+LOW.png" />
+    <Content Include="Assets\Images\Gallery\WMNSAIRJORDAN1LOW.png" />
     <Content Include="Assets\Images\Movie\350x495-meoma.jpg" />
     <Content Include="Assets\Images\Movie\cgv_1200x1800.jpg" />
     <Content Include="Assets\Images\Movie\poster_ngay_ta_da_yeu_6.jpg" />
@@ -116,7 +116,7 @@
     <Content Include="Assets\Images\Product\m_jolly_-_2-compressed.jpg" />
     <Content Include="Assets\Images\Product\noi-chien.png" />
     <Content Include="Assets\Images\Product\pnjsilver-ztxmw060007.png" />
-    <Content Include="Assets\Images\Product\WMNS+AIR+JORDAN+1+LOW.png" />
+    <Content Include="Assets\Images\Product\WMNSAIRJORDAN1LOW.png" />
     <Content Include="Assets\Images\Shop\09314542_logo-jollibee-500x500-1-401x400.jpg" />
     <Content Include="Assets\Images\Shop\14514819_LOGO-THE-PIZZA-COMPANY-500x500-1-400x400.jpg" />
     <Content Include="Assets\Images\Shop\85ba6666-85aa-43a5-8c30-a474210a6c38.png" />
@@ -160,6 +160,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\Feedback\index.js" />
+    <Content Include="Scripts\Gallery\add.js" />
+    <Content Include="Scripts\Gallery\index.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.js" />
@@ -171,6 +173,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
+    <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\AdminFilter.cs" />
     <Compile Include="Global.asax.cs">
@@ -279,7 +282,9 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Layout\AdminLayout.cshtml" />
     <Content Include="Views\Feedback\Index.cshtml" />
-    <Content Include="Views\Feedback\SendFeedback.cshtml" />
+    <Content Include="Views\Feedback\Send.cshtml" />
+    <Content Include="Views\Gallery\Index.cshtml" />
+    <Content Include="Views\Gallery\Add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -135,7 +135,7 @@ values
 	('Hwansaenggo.png', 'Hwansaenggo Serum Infused Foaming Cleanser 150ml'),
 	('MDV-107-1A3V.png', 'Genuine Men''s CASIO Watch MDV-107-1A3'),
 	('pnjsilver-ztxmw060007.png', 'Silver Ring PNJSilver ZTXMW060007'),
-	('WMNS+AIR+JORDAN+1+LOW.png', 'Air Jordan 1 Low')
+	('WMNSAIRJORDAN1LOW.png', 'Air Jordan 1 Low')
 
 insert into Feedback
 values
@@ -174,7 +174,7 @@ values
 	(2, 'THE FACE SHOP All Clear Micellar Cleansing Oil Whip 250ml', 'fa4f5004-9bb6-4902-91e1-2bec1cc40610.png', 'Able to remove dirt, stubborn makeup along with dirt deep inside pores, giving skin a healthy, naturally radiant glow.'),
 	(3, 'Genuine Men''s CASIO Watch MDV-107-1A3', 'MDV-107-1A3V.png', 'Take your all-metal analog style to the water. With water resistance up to 200 meters, a unidirectional rotating bezel and a screw-down case back, this is a watch that''s ready for any ocean sport or marine activity you throw your way. The sporty yet classic design also features a handy date display, providing practical convenience for a fashionable lifestyle.'),
 	(4, 'Silver Ring PNJSilver ZTXMW060007', 'pnjsilver-ztxmw060007.png', 'With a trendy design and stones attached around the surface of the ring on 92.5 silver material, PNJSilver brings a ring with youthful beauty but no less unconventional, helping girls look outstanding.'),
-	(5, 'Air Jordan 1 Low', 'WMNS+AIR+JORDAN+1+LOW.png', 'Inspired by the original that debuted in 1985, the Air Jordan 1 Low offers a clean, classic look that''s familiar yet always fresh. With an iconic design that pairs perfectly with any ''fit, these kicks ensure you''ll always be on point.'),
+	(5, 'Air Jordan 1 Low', 'WMNSAIRJORDAN1LOW.png', 'Inspired by the original that debuted in 1985, the Air Jordan 1 Low offers a clean, classic look that''s familiar yet always fresh. With an iconic design that pairs perfectly with any ''fit, these kicks ensure you''ll always be on point.'),
 	(6, '2 Happy Crispy Chicken + 1 Medium Fries + 1 Soft Drink', 'g_gi_n_vui_v_-_1_1.png', null),
 	(6, '1 medium Jolly Spaghetti + 2 boneless chicken + 1 medium French fries + 1 soft drink', 'm_jolly_-_2-compressed.jpg', null),
 	(6, 'Chicken Rice with Garlic Sauce', '54d1040569d8ce8697c9_1.jpg', null)

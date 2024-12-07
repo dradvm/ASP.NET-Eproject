@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Manage Gallery";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<a class="btn btn-success" href="/gallery/add">Add new gallery entry</a>
+<table id="gallery" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ABCDMall.Models.Gallery gallery in ViewBag.gallery)
+        {
+            <tr>
+                <td>
+                    <img src="~/Assets/Images/Gallery/@gallery.Image" alt="Error" height="100px" width="100px" />
+                </td>
+                <td>@gallery.Description</td>
+                <td>
+                    <a class="btn btn-primary" href="/gallery/update?id=@gallery.ID">Update</a>
+                    <button class="btn btn-danger" onclick="deleteGalleryEntry('@gallery.ID')">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script src="~/Scripts/Gallery/index.js"></script>
+
