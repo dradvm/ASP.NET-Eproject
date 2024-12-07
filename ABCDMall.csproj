@@ -161,6 +161,7 @@
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\Feedback\index.js" />
     <Content Include="Scripts\Gallery\add.js" />
+    <Content Include="Scripts\Gallery\update.js" />
     <Content Include="Scripts\Gallery\index.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -285,6 +286,7 @@
     <Content Include="Views\Feedback\Send.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
     <Content Include="Views\Gallery\Add.cshtml" />
+    <Content Include="Views\Gallery\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

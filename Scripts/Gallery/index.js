@@ -6,8 +6,8 @@
 
 function deleteGalleryEntry(id)
 {
+    console.log(1);
     if (confirm('Are you sure to delete the selected gallery entry?')) {
-        console.log(1);
-        window.location = `gallery/delete?id=${id}`; 
+        window.location = `/gallery/delete?id=${id}`; 
     }
 }

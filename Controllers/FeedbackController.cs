@@ -27,7 +27,7 @@ namespace ABCDMall.Controllers
         [HttpPost]
         public ActionResult Send(string email, string content)
         {
-            if (content == null && content.Trim().Length == 0)
+            if (content == null || content.Trim().Length == 0)
             {
                 return Redirect("/feedback/send?status=0");
             }
