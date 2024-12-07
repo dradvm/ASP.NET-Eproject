@@ -6,10 +6,22 @@
 
 <form method="post" enctype="multipart/form-data" action="/gallery/add">
     <label for="image">Image: </label>
-    <input id="image" type="file" name="image" required onchange="loadImage()" />
+    <input id="image" type="file" name="image" required onchange="loadImage()" accept=".jpg, .jpeg, .png, .svg" />
     <img id="preview" />
     <label for="description">Description: </label>
     <input name="description" />
+    @if (ViewBag.status == 0)
+    {
+        <div>An image must be chosen</div>
+    }
+    else if (ViewBag.status == -1)
+    {
+        <div>Image size must be less than 10MB</div>
+    }
+    else if (ViewBag.status == -2)
+    {
+        <div>The chosen image format is not supported</div>
+    }
     <button>Add</button>
 </form>
 <script src="~/Scripts/Gallery/add.js"></script>
