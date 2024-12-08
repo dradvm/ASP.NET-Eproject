@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Add New Movie";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<form method="post" action="/movie/add" enctype="multipart/form-data">
+    <label for="name">Name: </label>
+    <input name="name" required /><br />
+    <label for="image">Image: </label>
+    <input id="image" name="image" type="file" required accept=".png, .jpg, .jpeg, .svg" onchange="loadImage()" />
+    <img id="preview" /><br />
+    <label for="director">Director: </label>
+    <input name="director" required /><br />
+    <label for="genres">Genres: </label>
+    @foreach (ABCDMall.Models.Genre genre in ViewBag.genres)
+    {
+        <input id="genre@(genre.ID)" type="checkbox" name="genres" value="@genre.ID" />
+        <label for="genre@(genre.ID)">@genre.Name</label>
+    }
+    <br />
+    <label for="releaseDate">Release Date: </label>
+    <input type="date" name="releaseDate" value="@DateTime.Now.ToString("yyyy-MM-dd")" required /><br />
+    <label for="duration">Duration: </label>
+    <input name="duration" type="number" value="60" min="1" required /><br />
+    <label for="description">Description: </label>
+    <textarea name="description" required></textarea><br />
+    @switch (ViewBag.status)
+    {
+        case 2:
+            <div>New movie has been added</div>
+            break;
+        case 0:
+            <div>Name cannot be empty or filled with only spaces</div>
+            break;
+        case -1:
+            <div>An image must be chosen</div>
+            break;
+        case -2:
+            <div>Director cannot be empty or filled with only spaces</div>
+            break;
+        case -3:
+            <div>At least 1 genre must be chosen</div>
+            break;
+        case -4:
+            <div>Release date must be chosen</div>
+            break;
+        case -5:
+            <div>Duration must be greater than 0</div>
+            break;
+        case -6:
+            <div>Description cannot be empty or filled with only spaces</div>
+            break;
+        case -7:
+            <div>The selected image format is not supported</div>
+            break;
+        case -8:
+            <div>The selected image size must be less than 10MB</div>
+            break;
+        case -9:
+            <div>System error, please try again</div>
+            break;
+    }
+    <button>Add</button>
+</form>
+<script src="~/Scripts/Movie/add.js"></script>

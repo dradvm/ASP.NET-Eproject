@@ -37,11 +37,11 @@
                     <a class="btn btn-primary">Update</a>
                     @if (movie.Active == 0)
                     {
-                        <a class="btn btn-success" href="/movie/active?id=@movie.ID">Active</a>
+                        <a class="btn btn-success" href="/movie/enable?id=@movie.ID">Enable</a>
                     }
                     else if (movie.Showtimes.Any(showtime => showtime.Tickets.Count > 0))
                     {
-                        <a class="btn btn-danger" href="/movie/disable@(movie.ID)">Disable</a>
+                        <a class="btn btn-danger" href="/movie/disable?id=@movie.ID">Disable</a>
                     }
                     else
                     {
