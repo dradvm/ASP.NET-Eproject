@@ -9,15 +9,15 @@
         <tr>
             <th>Sending Time</th>
             <th>Sender</th>
-            <th>Content</th>
-            <th>Actions</th>
+            <th data-dt-order="disable">Content</th>
+            <th data-dt-order="disable">Actions</th>
         </tr>
     </thead>
     <tbody>
         @foreach (ABCDMall.Models.Feedback feedback in ViewBag.feedback)
         {
             <tr>
-                <td>@feedback.SendingTime.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                <td data-order="@feedback.SendingTime.Ticks">@feedback.SendingTime.ToString("dd/MM/yyyy HH:mm:ss")</td>
                 <td>@feedback.Email</td>
                 <td>@feedback.Content</td>
                 <td>
