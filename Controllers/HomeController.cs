@@ -1,6 +1,7 @@
 ﻿using ABCDMall.Models;
 using ABCDMall.Services;
 using System.Configuration;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace ABCDMall.Controllers
@@ -12,6 +13,9 @@ namespace ABCDMall.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.gallery = db.Galleries.ToList();
+            ViewData["selectedNav"] = "Home";
+
             return View();
         }
 

@@ -1,0 +1,393 @@
+﻿* {
+    box-sizing: border-box !important;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+}
+
+:root {
+    --main-bg-color: #0011DE;
+    --sub-bg-color: #0000FF;
+    --main-bg-hover-color: #000EBF;
+    --main-bg-active-color: #000991;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    offset: 0 0 0 0;
+    z-index: 999;
+    animation: slideIn .5s;
+}
+
+.modal-open {
+    display: flex;
+}
+
+.modal-container {
+    background-color: white;
+}
+
+.bg-danger:hover {
+    background-color: rgb(196, 4, 4) !important;
+}
+
+@keyframes slideIn {
+    from {
+        top: 100px;
+        opacity: 0;
+    }
+
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+.wheel {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.center-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 30px solid white;
+    position: absolute;
+}
+
+.my-input-form input,
+.my-input-form input:focus,
+.my-input-form input:focus-visible,
+.my-input-form span {
+    border: 0 !important;
+    border-bottom: 1px solid black !important;
+    outline: 0 !important;
+    background-color: transparent !important;
+    box-shadow: 0 0 0 0 black !important;
+    border-radius: 0px !important;
+}
+
+
+    .my-input-form input::placeholder {
+        color: #bbb;
+        font-size: .8rem;
+    }
+
+    .my-input-form input:focus::placeholder {
+        color: transparent;
+        transition: .2s;
+    }
+
+button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+    button:active {
+        border: 0 !important;
+    }
+
+.no-focus-visible:focus-visible {
+    outline: 0 !important;
+}
+
+.dropdown-item-custom:active {
+    background-color: var(--main-bg-color) !important;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.my-btn {
+    cursor: pointer;
+}
+
+    .my-btn:hover {
+        background-color: var(--main-bg-hover-color);
+        transition: .2s;
+    }
+
+    .my-btn:active {
+        background-color: var(--main-bg-active-color);
+    }
+
+.menu-item-nav {
+    cursor: pointer;
+    color: black;
+}
+
+.menu-item-nav-hover {
+    position: relative;
+    transition: .2s;
+}
+
+    .menu-item-nav-hover:hover {
+        color: var(--main-bg-color);
+    }
+
+    .menu-item-nav-hover::after {
+        content: "";
+        position: absolute;
+        height: 3px;
+        width: 0%;
+        background-color: var(--main-bg-hover-color);
+        top: 130%;
+        left: 50%;
+        transition: .2s;
+    }
+
+    .menu-item-nav-hover:hover::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        top: 130%;
+        left: 0;
+    }
+
+.favorite-floating-btn {
+    top: 3%;
+    right: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    background-color: white;
+    border-radius: 50%;
+    transition: .2s;
+}
+
+    .favorite-floating-btn > .heart {
+        /* padding: 8px; */
+        transition: .2s;
+    }
+
+    .favorite-floating-btn:hover {
+        background-color: #FF8787;
+    }
+
+        .favorite-floating-btn:hover > .heart {
+            color: white;
+        }
+
+.favorite-floating-btn-mark {
+    background-color: #f05757;
+}
+
+    .favorite-floating-btn-mark > .heart {
+        color: white;
+    }
+
+.menu-item-nav-selected {
+    color: var(--main-bg-color);
+    font-weight: bold;
+}
+
+.item-nav {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+    .item-nav > div:first-of-type {
+        width: 20%;
+    }
+
+    .item-nav.item-nav-selected {
+        border-radius: 8px;
+        background-color: var(--main-bg-color);
+    }
+
+    .item-nav.item-nav.item-nav-selected > div {
+        color: white;
+    }
+
+    .item-nav:hover {
+        border-radius: 8px;
+        background-color: var(--sub-bg-color);
+    }
+
+    .item-nav.item-nav-selected:hover {
+        border-radius: 8px;
+        background-color: var(--main-bg-color);
+    }
+
+.bg-main {
+    background-color: var(--main-bg-color);
+}
+
+.bg-sub {
+    background-color: var(--sub-bg-color);
+}
+
+.text-main {
+    color: var(--main-bg-color);
+}
+
+.text-main-hover:hover {
+    color: var(--main-bg-hover-color);
+    transition: .1s;
+}
+
+.text-main-active:active {
+    color: var(--main-bg-active-color);
+}
+
+.text-sub {
+    color: var(--sub-bg-color);
+}
+
+.fs-7 {
+    font-size: .8rem;
+}
+
+.fs-8 {
+    font-size: .6rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.order-nav-item {
+    cursor: pointer;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+    .order-nav-item::before {
+        content: "";
+        position: absolute;
+        height: 3px;
+        width: 0%;
+        background-color: var(--main-bg-hover-color);
+        bottom: 0%;
+        left: 50%;
+        transition: .2s;
+    }
+
+    .order-nav-item:hover::before {
+        width: 100%;
+        bottom: 0%;
+        left: 0;
+    }
+
+    .order-nav-item:hover {
+        color: var(--main-bg-hover-color);
+    }
+
+.order-nav-item-selected {
+    color: var(--main-bg-active-color);
+}
+
+    .order-nav-item-selected:hover {
+        color: var(--main-bg-active-color);
+    }
+
+    .order-nav-item-selected::before {
+        content: "";
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background-color: var(--main-bg-active-color);
+        bottom: 0%;
+        left: 0%;
+    }
+
+.row {
+    --bs-gutter-x: 0
+}
+
+.my-row {
+    --bs-gutter-x: 1.5rem
+}
+
+.fade {
+    animation: fade .2s ease forwards;
+}
+
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes left-in {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0s);
+    }
+}
+
+.spinner div {
+    height: 120px;
+    width: 120px;
+    border: 6px solid;
+    border-color: var(--main-bg-color) transparent var(--main-bg-color) transparent;
+    border-radius: 50%;
+    animation: spin 1.4s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rank:hover {
+    background-color: var(--main-bg-hover-color);
+    color: white;
+    cursor: pointer;
+}
+
+.rank-selected {
+    background-color: var(--main-bg-active-color);
+    color: white;
+}
+
+    .rank-selected:hover {
+        background-color: var(--main-bg-active-color);
+    }
+.truncate-2-lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    line-height: 1.5; /* Chiều cao của mỗi dòng */
+    max-height: calc(1.5em * 2); /* Chiều cao của khung = 2 dòng */
+    position: relative;
+}
+
