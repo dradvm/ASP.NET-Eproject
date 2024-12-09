@@ -1,5 +1,5 @@
 ﻿$(document).ready(() => {
     $('#feedback').DataTable({
-        ordering: false
+        order: [[0, 'desc']]
     });
 });

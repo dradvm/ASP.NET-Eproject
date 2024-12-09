@@ -14,7 +14,7 @@ namespace ABCDMall.Controllers
         [AdminFilter]
         public ActionResult Index()
         {
-            ViewBag.feedback = db.Feedbacks.OrderByDescending(item => item.SendingTime).ToList();
+            ViewBag.feedback = db.Feedbacks.ToList();
             return View();
         }
 
