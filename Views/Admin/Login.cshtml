@@ -89,7 +89,7 @@
             inputPassword = $('#password').val();
             valid = true;
             if (inputUsername.trim().length === 0) {
-                $('#email-error').text("Username can't be empty or filled with spaces");
+                $('#email-error').text("Email can't be empty or filled with spaces");
                 valid = false;
             }
             if (inputPassword.trim().length === 0) {
@@ -104,7 +104,7 @@
                     type: 'POST',
                     url: '/admin/login',
                     data: {
-                        username: inputUsername,
+                        email: inputUsername,
                         password: inputPassword
                     },
                     success: function (response) {
