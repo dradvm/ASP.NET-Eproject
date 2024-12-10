@@ -13,6 +13,7 @@ namespace ABCDMall.Controllers
         public ActionResult Login(int status = 1)
         {
             ViewBag.status = status;
+            ViewData["selectedNav"] = "Home";
             return View();
         }
 
@@ -23,10 +24,10 @@ namespace ABCDMall.Controllers
             Admin admin = db.Admins.FirstOrDefault(item => item.Email == email && item.Password == password);
             if (admin == null)
             {
-                return Redirect("/admin/login?status=0");
+                return Json("Fail");
             }
             Session["admin"] = admin;
-            return Redirect("/admin/index");
+            return Json("/admin/index");
         }
 
         public ActionResult Logout()
