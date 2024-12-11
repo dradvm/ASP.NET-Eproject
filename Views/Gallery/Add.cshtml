@@ -4,25 +4,41 @@
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
 
-<form method="post" enctype="multipart/form-data" action="/gallery/add">
-    <label for="image">Image: </label>
-    <input id="image" type="file" name="image" required onchange="loadImage()" accept=".jpg, .jpeg, .png, .svg" />
-    <img id="preview" />
-    <label for="description">Description: </label>
-    <input name="description" />
-    @if (ViewBag.status == 0)
-    {
-        <div>An image must be chosen</div>
-    }
-    else if (ViewBag.status == -1)
-    {
-        <div>Image size must be less than 10MB</div>
-    }
-    else if (ViewBag.status == -2)
-    {
-        <div>The chosen image format is not supported</div>
-    }
-    <button>Add</button>
-</form>
+<div class="w-100 h-100 d-flex align-items-center justify-content-around">
+    <form method="post" enctype="multipart/form-data" action="/gallery/add" class="mt-3" style="width: 300px;">
+        @*<label for="image">Image: </label>*@
+        <div class="vstack gap-3">
+            <div class="vstack align-items-center">
+                <div style="width: 300px; height: 300px">
+                    <img id="preview" src="~/Assets/Images/empty.jpg" class="w-100 h-100" />
+                </div>
+                <input class="d-none" id="image" type="file" name="image"  onchange="loadImage()" accept=".jpg, .jpeg, .png, .svg" />
+                <button type="button" class="my-btn bg-main text-white px-3 py-1 rounded-1 mt-3" onclick="triggerFileInput()">Select Image</button>
+            </div>
+            <div class="my-input-form">
+                <input name="description" placeholder="Description of image" class="w-100" />
+            </div>
+            @if (ViewBag.status == 0)
+            {
+                <div class="text-danger">An image must be chosen</div>
+            }
+            else if (ViewBag.status == -1)
+            {
+                <div class="text-danger">Image size must be less than 10MB</div>
+            }
+            else if (ViewBag.status == -2)
+            {
+                <div class="text-danger">The chosen image format is not supported</div>
+            }
+            <button type="submit" class="text-decoration-none my-btn bg-main text-white px-3 py-1 rounded-1">
+                Add
+            </button>
+        </div>
+    </form>
+</div>
 <script src="~/Scripts/Gallery/add.js"></script>
-
+<script>
+    function triggerFileInput() {
+        document.getElementById("image").click();
+    }
+</script>

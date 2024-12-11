@@ -227,6 +227,7 @@ a {
     .item-nav:hover {
         border-radius: 8px;
         background-color: var(--sub-bg-color);
+        color: white;
     }
 
     .item-nav.item-nav-selected:hover {

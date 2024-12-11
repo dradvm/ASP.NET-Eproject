@@ -15,6 +15,7 @@ namespace ABCDMall.Controllers
         public ActionResult Index()
         {
             ViewBag.feedback = db.Feedbacks.ToList();
+            ViewData["selectedNav"] = "AdminFeedback";
             return View();
         }
 

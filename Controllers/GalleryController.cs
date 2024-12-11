@@ -17,6 +17,7 @@ namespace ABCDMall.Controllers
         public ActionResult Index()
         {
             ViewBag.gallery = db.Galleries.ToList();
+            ViewData["selectedNav"] = "AdminGallery";
             return View();
         }
 
@@ -24,6 +25,7 @@ namespace ABCDMall.Controllers
         public ActionResult Add(int status = 1)
         {
             ViewBag.status = status;
+            ViewData["selectedNav"] = "AdminGallery";
             return View();
         }
 
@@ -60,6 +62,7 @@ namespace ABCDMall.Controllers
         [AdminFilter]
         public ActionResult Update(int id, int status = 1)
         {
+            ViewData["selectedNav"] = "AdminGallery";
             Gallery gallery = db.Galleries.FirstOrDefault(item => item.ID == id);
             if (gallery == null)
             {

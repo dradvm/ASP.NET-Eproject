@@ -14,7 +14,6 @@ namespace ABCDMall.Controllers
         public ActionResult Login(int status = 1)
         {
             ViewBag.status = status;
-            ViewData["selectedNav"] = "Home";
             return View();
         }
 
@@ -43,6 +42,7 @@ namespace ABCDMall.Controllers
         [AdminFilter]
         public ActionResult Index()
         {
+            ViewData["selectedNav"] = "Index";
             return View();
         }
 

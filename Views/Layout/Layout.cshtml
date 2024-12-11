@@ -6,7 +6,9 @@
         <title>@ViewBag.Title</title>
         <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
         <link href="~/Content/mycss.css?v=@DateTime.Now.Ticks" rel="stylesheet" />
+        <script src="~/Scripts/popper.js"></script>
         <script src="~/Scripts/bootstrap.min.js"></script>
         <script src="~/Scripts/jquery-3.7.1.min.js"></script>
 
@@ -74,7 +76,7 @@
         <div class="bg-primary text-white px-5 py-5 d-flex justify-content-between">
             <div style="width: 15%" class="d-flex justify-content-around">
                 <div class="d-flex justify-content-around align-items-center p-2 rounded-circle bg-white" style="width: 120px; height: 120px">
-                    <img src="~/Assets/Images/logo.png" class="w-100"/>
+                    <img src="~/Assets/Images/logo.png" class="w-100" />
                 </div>
             </div>
             <div style="width: 35%">
@@ -94,47 +96,9 @@
                 </div>
                 <div class="mt-3">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d62860.600150716804!2d105.785555!3d10.034386!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfbe50d7e7b046724!2zU2Vuc2UgQ2l0eSBD4bqnbiBUaMah!5e0!3m2!1svi!2sus!4v1633963208827!5m2!1svi!2sus" width="100%" height="200">
-
                     </iframe>
                 </div>
             </div>
         </div>
     </body>
     </html>
-@*<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/home/index">ABCD Mall</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Link</a>
-                        <a class="nav-link active" aria-current="page" href="/feedback/send">Send Feedback</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-                <a class="btn" href="/admin/login">Log in</a>
-            </div>
-        </div>
-    </nav>
-    <div>
-        @RenderBody()
-    </div>
-</body>
-</html>*@

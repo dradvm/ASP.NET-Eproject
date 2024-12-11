@@ -18,6 +18,7 @@ namespace ABCDMall.Controllers
         public ActionResult Index()
         {
             ViewBag.movies = db.Movies.ToList();
+            ViewData["selectedNav"] = "AdminMovies";
             return View();
         }
 
@@ -26,6 +27,7 @@ namespace ABCDMall.Controllers
         {
             ViewBag.status = status;
             ViewBag.genres = db.Genres.ToList();
+            ViewData["selectedNav"] = "AdminMovies";
             return View();
         }
 
