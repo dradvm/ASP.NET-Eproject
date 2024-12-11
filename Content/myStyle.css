@@ -1,0 +1,19 @@
+﻿/*phần thiết kế css cho trang
+ 1/ admin shopping centers
+ 2/ admin item products 
+ 3/ about us, contact us
+ 4/ search foodcourt and shopping centers
+*/
+
+.btn-group .btn i {
+    margin-right: 5px; /* Khoảng cách giữa icon và chữ */
+}
+
+.btn-group .btn {
+    font-size: 1.25rem; /* Kích thước chữ lớn hơn */
+    font-weight: bold; /* Chữ đậm */
+}
+
+.btn-group .btn i {
+    font-size: 1.2rem; /* Kích thước icon lớn hơn */
+}

@@ -147,6 +147,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\mycss.css" />
+    <Content Include="Content\myStyle.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\ABCDMall.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -186,6 +187,7 @@
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
+    <Compile Include="Controllers\ShoppingCentersController.cs" />
     <Compile Include="Filters\AdminFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -299,6 +301,8 @@
     <Content Include="Views\Gallery\Update.cshtml" />
     <Content Include="Views\Movie\Index.cshtml" />
     <Content Include="Views\Movie\Add.cshtml" />
+    <Content Include="Views\ShoppingCenters\Index.cshtml" />
+    <Content Include="Views\ShoppingCenters\Add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
