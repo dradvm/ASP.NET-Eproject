@@ -1,16 +1,18 @@
 ﻿
 @{
-    ViewBag.Title = "Add New Movie";
+    ViewBag.Title = "Update Movie";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
 <div class="px-4 pt-4">
-    <form method="post" action="/movie/add" enctype="multipart/form-data" class="d-flex justify-content-between align-items-center">
+    <form method="post" action="/movie/update" enctype="multipart/form-data" class="d-flex justify-content-between align-items-center">
+        <input type="hidden" name="id" value="@(((ABCDMall.Models.Movie) ViewBag.movie).ID)" />
+
         <div style="width: 30%">
             <div class="vstack gap-3">
                 <div class="w-100" style="height: 400px">
-                    <img id="preview" src="~/Assets/Images/empty.jpg" class="w-100 h-100" />
+                    <img id="preview" src="~/Assets/Images/Movie/@(((ABCDMall.Models.Movie) ViewBag.movie).Image)" class="w-100 h-100" />
                 </div>
-                <input class="d-none" id="image" name="image" type="file" accept=".png, .jpg, .jpeg, .svg" onchange="loadImage()" />
+                <input class="d-none" id="image" name="image" type="file" accept=".png, .jpg, .jpeg, .svg" onchange="loadImage('/Assets/Images/Movie/@(((ABCDMall.Models.Movie) ViewBag.movie).Image)')" />
                 <button type="button" class="my-btn bg-main text-white px-3 py-1 rounded-1 mt-3" onclick="triggerFileInput()">Select Image</button>
             </div>
         </div>
@@ -23,7 +25,7 @@
                     </label>
                     <div class="input-group my-input-form">
                         <span class="input-group-text"><i class="fa-solid fa-film"></i></span>
-                        <input name="name" type="text" class="form-control" placeholder="Name" required>
+                        <input name="name" type="text" class="form-control" placeholder="Name" required value="@(((ABCDMall.Models.Movie) ViewBag.movie).Name)">
                     </div>
                 </div>
                 <div style="width: 32%">
@@ -34,7 +36,7 @@
                     </label>
                     <div class="input-group my-input-form">
                         <span class="input-group-text"><i class="fa-solid fa-clapperboard"></i></span>
-                        <input name="director" type="text" class="form-control" placeholder="Director" required>
+                        <input name="director" type="text" class="form-control" placeholder="Director" required value="@(((ABCDMall.Models.Movie) ViewBag.movie).Director)">
                     </div>
                 </div>
 
@@ -42,7 +44,7 @@
                     <label for="duration" class="form-label fs-7 fw-bold" style="margin-bottom: 0;">Duration: </label>
                     <div class="input-group my-input-form">
                         <span class="input-group-text"><i class="fa-solid fa-hourglass"></i></span>
-                        <input name="duration" class="form-control" type="number" value="60" min="1" required />
+                        <input name="duration" class="form-control" type="number" value="@(((ABCDMall.Models.Movie) ViewBag.movie).Duration)" min="1" required />
                     </div>
                 </div>
             </div>
@@ -52,21 +54,21 @@
                     @foreach (ABCDMall.Models.Genre genre in ViewBag.genres)
                     {
                         <div class="col-3">
-                            <input id="genre@(genre.ID)" type="checkbox" name="genres" value="@genre.ID" />
+                            <input id="genre@(genre.ID)" type="checkbox" name="genres" value="@genre.ID" checked="@(((ABCDMall.Models.Movie)ViewBag.movie).Genres.Contains(genre))" />
                             <label for="genre@(genre.ID)">@genre.Name</label>
                         </div>
                     }
                 </div>
-               
+
             </div>
             <div class="mt-3">
                 <label for="releaseDate" class="form-label fs-7 fw-bold">Release Date: </label>
-                <input class="form-control" type="date" name="releaseDate" value="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+                <input class="form-control" type="date" name="releaseDate" value="@(((ABCDMall.Models.Movie) ViewBag.movie).RealeaseDate.ToString("yyyy-MM-dd"))" required />
             </div>
             <div class="mt-3">
                 <label for="description" class="form-label fs-7 fw-bold">Description: </label>
                 <div>
-                    <textarea class="form-control" name="description" required></textarea>
+                    <textarea class="form-control" name="description" required>@(((ABCDMall.Models.Movie) ViewBag.movie).Description)</textarea>
                 </div>
             </div>
 
@@ -105,13 +107,13 @@
                         break;
                 }
             </div>
-        <button type="submit" class="w-100 mt-3 text-decoration-none my-btn bg-main text-white px-3 py-1 rounded-1">
-            Add
-        </button>
+            <button type="submit" class="w-100 mt-3 text-decoration-none my-btn bg-main text-white px-3 py-1 rounded-1">
+                Update
+            </button>
         </div>
-        
+
     </form>
-    <script src="~/Scripts/Movie/add.js"></script>
+    <script src="~/Scripts/Movie/update.js"></script>
 </div>
 
 <script>

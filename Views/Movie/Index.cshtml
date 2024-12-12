@@ -15,40 +15,38 @@
             <th>Release Date</th>
             <th>Duration</th>
             <th data-dt-order="disable">Description</th>
-            <th>Active</th>
             <th data-dt-order="disable">Actions</th>
         </tr>
     </thead>
     <tbody>
         @foreach (ABCDMall.Models.Movie movie in ViewBag.movies)
         {
-            <tr>
-                <td>@movie.Name</td>
-                <td>
-                    <img src="~/Assets/Images/Movie/@movie.Image" height="100px" width="auto" />
-                </td>
-                <td>@movie.Director</td>
-                <td>@string.Join(", ", movie.Genres.Select(genre => genre.Name))</td>
-                <td data-order="@movie.RealeaseDate.Ticks">@movie.RealeaseDate.ToString("dd/MM/yyyy")</td>
-                <td>@movie.Duration</td>
-                <td>@movie.Description</td>
-                <td>@(movie.Active == 1 ? "Yes" : "No")</td>
-                <td>
-                    <a class="btn btn-primary">Update</a>
-                    @if (movie.Active == 0)
-                    {
-                        <a class="btn btn-success" href="/movie/enable?id=@movie.ID">Enable</a>
-                    }
-                    else if (movie.Showtimes.Any(showtime => showtime.Tickets.Count > 0))
-                    {
-                        <a class="btn btn-danger" href="/movie/disable?id=@movie.ID">Disable</a>
-                    }
-                    else
-                    {
+            if (movie.Active != 0)
+            {
+                <tr>
+                    <td>@movie.Name</td>
+                    <td>
+                        <img src="~/Assets/Images/Movie/@movie.Image" height="100px" width="auto" />
+                    </td>
+                    <td>@movie.Director</td>
+                    <td>@string.Join(", ", movie.Genres.Select(genre => genre.Name))</td>
+                    <td data-order="@movie.RealeaseDate.Ticks">@movie.RealeaseDate.ToString("dd/MM/yyyy")</td>
+                    <td>@movie.Duration</td>
+                    <td style="text-align: justify">@movie.Description</td>
+                    <td>
+                        <a class="btn btn-primary" href="/movie/update?id=@movie.ID">Update</a>
+
+                        @if (movie.Showtimes.Any(showtime => showtime.Tickets.Count > 0))
+                        {
+                        <a class="btn btn-danger" href="/movie/disable?id=@movie.ID">Delete</a>
+                        }
+                        else
+                        {
                         <button class="btn btn-danger" onclick="deleteMovie('@movie.ID')">Delete</button>
-                    }
-                </td>
-            </tr>
+                        }
+                    </td>
+                </tr>
+            }
         }
     </tbody>
 </table>
