@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Movie";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+
+<div class="container d-flex justify-content-between align-items-center mb-5">
+    @for (int i = 0; i < 10; i++)
+    {
+        <a href="/home/movie?variance=@i" style="width: 8%" class="bg-light py-1 px-2 rounded-1 @(ViewBag.variance == i ? "border border-2 border-black" : "")">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="fs-7">@DateTime.Now.AddDays(i).Month</div>
+                    <div class="fs-7">@DateTime.Now.AddDays(i).ToString("ddd")</div>
+                </div>
+                <div class="fs-5 fw-bold ">
+                    @DateTime.Now.AddDays(i).Day
+                </div>
+            </div>
+        </a>
+    }
+</div>
+<div class="vstack gap-3 px-5 mx-5">
+    @foreach (ABCDMall.Models.Movie movie in ViewBag.movies)
+    {
+       <div>
+           <div>
+               <div class="fw-bold fs-5">@movie.Name</div>
+           </div>
+           <div class="d-flex justify-content-between mt-3">
+               <div style="width: 20%">
+                   <div class="w-100" style="height: 300px">
+                       <img src="~/Assets/Images/Movie/@movie.Image" / class="w-100 h-100">
+                   </div>
+               </div>
+               <div style="width: 75%">
+                   <div class="d-flex flex-wrap">
+                       @if (movie.Showtimes != null)
+                       {
+                           foreach (ABCDMall.Models.Showtime showtime in movie.Showtimes)
+                           {
+                               if (showtime.StartingTime.Date == DateTime.Today.AddDays(ViewBag.variance) && showtime.StartingTime > DateTime.Today)
+                               {
+                                   <div class="border py-1 me-3 text-center showtime-item" style="width: 100px">
+                                       @showtime.StartingTime.ToString("hh:mm tt")
+                                   </div>
+                               }
+
+                           }
+                       }
+
+                   </div>
+               </div>
+           </div>
+           <hr />
+       </div>
+    }
+</div>

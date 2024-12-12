@@ -392,3 +392,11 @@ input::-webkit-inner-spin-button {
     position: relative;
 }
 
+.showtime-item {
+    transition: .1s;
+    cursor: pointer;
+}
+
+.showtime-item:hover { 
+    border: 1px solid black !important
+}

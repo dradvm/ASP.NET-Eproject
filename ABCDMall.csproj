@@ -305,6 +305,7 @@
     <Content Include="Views\Movie\Update.cshtml" />
     <Content Include="Views\ShoppingCenters\Index.cshtml" />
     <Content Include="Views\ShoppingCenters\Add.cshtml" />
+    <Content Include="Views\Home\Movie.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

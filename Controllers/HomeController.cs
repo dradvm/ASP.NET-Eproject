@@ -1,6 +1,8 @@
 ﻿using ABCDMall.Models;
 using ABCDMall.Services;
+using System;
 using System.Configuration;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -19,6 +21,16 @@ namespace ABCDMall.Controllers
             return View();
         }
 
+        public ActionResult Movie(int variance = 0)
+        {
+            DateTime date = DateTime.Now.Date.AddDays(variance);
+            ViewBag.movies = db.Movies.Where(movie => movie.Showtimes.Any(showtime => DbFunctions.TruncateTime(showtime.StartingTime) == date.Date));
+            ViewData["selectedNav"] = "Movies";
+            ViewBag.variance = variance;
+            return View();
+        }
+
+            
         //Test thanh toán
         public ActionResult TestPayment()
         {

@@ -37,6 +37,7 @@ namespace ABCDMall.Controllers
         {
             // Tạo danh sách cho dropdown nếu cần
             ViewBag.shops = new SelectList(db.ShopTypes, "ID", "Name"); // Tùy chỉnh bảng phù hợp
+            ViewData["selectedNav"] = "AdminShop";
             return View();
         }
 
