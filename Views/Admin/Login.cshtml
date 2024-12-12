@@ -32,6 +32,7 @@
 </head>
 
 <body>
+    @Html.AntiForgeryToken()
     <div class="w-100 vh-100">
         <img src="~/Assets/Images/bg.png" style="width: 100%; height: 100%;" />
     </div>
@@ -87,6 +88,7 @@
             $('#error').text('');
             inputUsername = $('#email').val();
             inputPassword = $('#password').val();
+            token = $('input[name="__RequestVerificationToken"]').val();
             valid = true;
             if (inputUsername.trim().length === 0) {
                 $('#email-error').text("Email can't be empty or filled with spaces");
@@ -104,6 +106,7 @@
                     type: 'POST',
                     url: '/admin/login',
                     data: {
+                        __RequestVerificationToken: token,
                         email: inputUsername,
                         password: inputPassword
                     },

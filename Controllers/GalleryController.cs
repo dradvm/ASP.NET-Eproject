@@ -17,7 +17,6 @@ namespace ABCDMall.Controllers
         public ActionResult Index()
         {
             ViewBag.gallery = db.Galleries.ToList();
-            ViewData["selectedNav"] = "AdminGallery";
             return View();
         }
 
@@ -25,12 +24,12 @@ namespace ABCDMall.Controllers
         public ActionResult Add(int status = 1)
         {
             ViewBag.status = status;
-            ViewData["selectedNav"] = "AdminGallery";
             return View();
         }
 
         [AdminFilter]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(HttpPostedFileBase image, string description)
         {
             if (image == null || image.ContentLength == 0)
@@ -62,7 +61,6 @@ namespace ABCDMall.Controllers
         [AdminFilter]
         public ActionResult Update(int id, int status = 1)
         {
-            ViewData["selectedNav"] = "AdminGallery";
             Gallery gallery = db.Galleries.FirstOrDefault(item => item.ID == id);
             if (gallery == null)
             {
@@ -75,6 +73,7 @@ namespace ABCDMall.Controllers
 
         [AdminFilter]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Update(int id, HttpPostedFileBase image, string description)
         {
             Gallery gallery = db.Galleries.FirstOrDefault(item => item.ID == id);
@@ -115,6 +114,8 @@ namespace ABCDMall.Controllers
         }
 
         [AdminFilter]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             Gallery gallery = db.Galleries.FirstOrDefault(item => item.ID == id);
@@ -128,7 +129,7 @@ namespace ABCDMall.Controllers
                 db.Galleries.Remove(gallery);
                 db.SaveChanges();
             }
-            return Redirect("/gallery/index");
+            return Json("OK");
         }
 
         protected override void Dispose(bool disposing)

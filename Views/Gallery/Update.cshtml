@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Update Gallery Entry";
+    ViewData["selectedNav"] = "AdminGallery";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
 
@@ -16,6 +17,7 @@
 
 <div class="w-100 h-100 d-flex align-items-center justify-content-around">
     <form method="post" enctype="multipart/form-data" action="/gallery/update" class="mt-3" style="width: 300px;">
+        @Html.AntiForgeryToken()
         @*<label for="image">Image: </label>*@
         <input type="hidden" name="id" value="@(((ABCDMall.Models.Gallery) ViewBag.gallery).ID)" />
 

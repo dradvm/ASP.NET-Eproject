@@ -16,8 +16,6 @@ namespace ABCDMall.Controllers
         public ActionResult Index()
         {
             ViewBag.gallery = db.Galleries.ToList();
-            ViewData["selectedNav"] = "Home";
-
             return View();
         }
 

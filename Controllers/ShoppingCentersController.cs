@@ -17,7 +17,6 @@ namespace ABCDMall.Controllers
         public ActionResult Index()
         {
             ViewBag.shops = db.Shops.ToList();
-            ViewData["selectedNav"] = "AdminShop";
             return View();
         }
 

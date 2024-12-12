@@ -1,9 +1,11 @@
 ﻿    
 @{
     ViewBag.Title = "Manage Movies";
+    ViewData["selectedNav"] = "AdminMovies";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
 
+@Html.AntiForgeryToken()
 <a class="btn btn-success" href="/movie/add">Add new movie</a>
 <table id="movies" class="table table-striped">
     <thead>
@@ -35,10 +37,9 @@
                     <td style="text-align: justify">@movie.Description</td>
                     <td>
                         <a class="btn btn-primary" href="/movie/update?id=@movie.ID">Update</a>
-
                         @if (movie.Showtimes.Any(showtime => showtime.Tickets.Count > 0))
                         {
-                        <a class="btn btn-danger" href="/movie/disable?id=@movie.ID">Delete</a>
+                        <button class="btn btn-danger" onclick="disableMovie('@movie.ID')">Disable</button>
                         }
                         else
                         {

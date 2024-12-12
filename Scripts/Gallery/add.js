@@ -7,9 +7,10 @@ function loadImage() {
         let reader = new FileReader();
         reader.onload = function (e) {
             preview.src = e.target.result;
-            preview.style.height = '200px';
-            preview.style.width = 'auto';
         }
         reader.readAsDataURL(file);
+    }
+    else {
+        preview.src = '/Assets/Images/empty.jpg';
     }
 }

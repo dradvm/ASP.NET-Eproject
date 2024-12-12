@@ -15,7 +15,6 @@ namespace ABCDMall.Controllers
         public ActionResult Index()
         {
             ViewBag.feedback = db.Feedbacks.ToList();
-            ViewData["selectedNav"] = "AdminFeedback";
             return View();
         }
 
@@ -26,6 +25,7 @@ namespace ABCDMall.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Send(string email, string content)
         {
             if (content == null || content.Trim().Length == 0)
