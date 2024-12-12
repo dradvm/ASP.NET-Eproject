@@ -21,9 +21,6 @@ namespace ABCDMall.Controllers
         public ActionResult Login(string email, string password)
         {
             password = HashService.GetHash(password);
-            Debug.WriteLine(email);
-            Debug.WriteLine(password);
-
             Admin admin = db.Admins.FirstOrDefault(item => item.Email == email && item.Password == password);
             if (admin == null)
             {

@@ -12,4 +12,7 @@ function loadImage() {
         }
         reader.readAsDataURL(file);
     }
+    else {
+        preview.src = '';
+    }
 }
