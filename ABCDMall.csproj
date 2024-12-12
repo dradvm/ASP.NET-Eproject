@@ -302,12 +302,9 @@
     <Content Include="Views\Gallery\Update.cshtml" />
     <Content Include="Views\Movie\Index.cshtml" />
     <Content Include="Views\Movie\Add.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Movie\Update.cshtml" />
-=======
     <Content Include="Views\ShoppingCenters\Index.cshtml" />
     <Content Include="Views\ShoppingCenters\Add.cshtml" />
->>>>>>> 22212a498bcf4b3df413113fa3c6d7377cc2ec5d
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
