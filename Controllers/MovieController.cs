@@ -18,7 +18,6 @@ namespace ABCDMall.Controllers
         public ActionResult Index()
         {
             ViewBag.movies = db.Movies.ToList();
-            ViewData["selectedNav"] = "AdminMovies";
             return View();
         }
 
@@ -27,12 +26,12 @@ namespace ABCDMall.Controllers
         {
             ViewBag.status = status;
             ViewBag.genres = db.Genres.ToList();
-            ViewData["selectedNav"] = "AdminMovies";
             return View();
         }
 
         [AdminFilter]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(string name, HttpPostedFileBase image, string director, List<int> genres, DateTime releaseDate, int duration, string description)
         {
             Movie movie = new Movie();
@@ -98,7 +97,6 @@ namespace ABCDMall.Controllers
         [AdminFilter]
         public ActionResult Update(int id, int status = 1)
         {
-            ViewData["selectedNav"] = "AdminMovies";
             Movie movie = db.Movies.FirstOrDefault(item => item.ID == id);
             if (movie == null)
             {
@@ -112,6 +110,7 @@ namespace ABCDMall.Controllers
 
         [AdminFilter]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Update(int id, string name, HttpPostedFileBase image, string director, List<int> genres, DateTime releaseDate, int duration, string description)
         {
             Movie movie = db.Movies.FirstOrDefault(item => item.ID == id);
@@ -161,11 +160,16 @@ namespace ABCDMall.Controllers
                 {
                     return Redirect("/movie/add?status=-7");
                 }
-                movie.Image = HashService.GetHash(image.FileName) + DateTime.Now.ToString("yyyyMMddHHmmss") + Path.GetExtension(image.FileName);
                 if (image.ContentLength > 10000000)
                 {
                     return Redirect("/movie/add?status=-8");
                 }
+                string oldImage = movie.Image;
+                if (System.IO.File.Exists(oldImage))
+                {
+                    System.IO.File.Delete(oldImage);
+                }
+                movie.Image = HashService.GetHash(image.FileName) + DateTime.Now.ToString("yyyyMMddHHmmss") + Path.GetExtension(image.FileName);
                 image.SaveAs(Path.Combine(Server.MapPath("~/Assets/Images/Movie"), movie.Image));
             }
             db.SaveChanges();
@@ -173,18 +177,8 @@ namespace ABCDMall.Controllers
         }
 
         [AdminFilter]
-        public ActionResult Enable(int id)
-        {
-            Movie movie = db.Movies.FirstOrDefault(item => item.ID == id);
-            if (movie != null)
-            {
-                movie.Active = 1;
-                db.SaveChanges();
-            }
-            return Redirect("/movie/index");
-        }
-
-        [AdminFilter]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Disable(int id)
         {
             Movie movie = db.Movies.FirstOrDefault(item => item.ID == id);
@@ -193,10 +187,12 @@ namespace ABCDMall.Controllers
                 movie.Active = 0;
                 db.SaveChanges();
             }
-            return Redirect("/movie/index");
+            return Json("OK");
         }
 
         [AdminFilter]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             Movie movie = db.Movies.FirstOrDefault(item => item.ID == id);
@@ -210,7 +206,7 @@ namespace ABCDMall.Controllers
                 db.Movies.Remove(movie);
                 db.SaveChanges();
             }
-            return Redirect("/movie/index");
+            return Json("OK");
         }
 
         protected override void Dispose(bool disposing)

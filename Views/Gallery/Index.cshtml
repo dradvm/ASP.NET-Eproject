@@ -1,9 +1,11 @@
 ﻿
 @{
     ViewBag.Title = "Manage Gallery";
+    ViewData["selectedNav"] = "AdminGallery";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
 
+@Html.AntiForgeryToken()
 <a class="btn btn-success" href="/gallery/add">Add new gallery entry</a>
 <table id="gallery" class="table table-striped">
     <thead>

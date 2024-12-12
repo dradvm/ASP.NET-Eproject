@@ -1,7 +1,6 @@
 ﻿using ABCDMall.Filters;
 using ABCDMall.Models;
 using ABCDMall.Services;
-using System.Diagnostics;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -18,6 +17,7 @@ namespace ABCDMall.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(string email, string password)
         {
             password = HashService.GetHash(password);
@@ -39,7 +39,6 @@ namespace ABCDMall.Controllers
         [AdminFilter]
         public ActionResult Index()
         {
-            ViewData["selectedNav"] = "Index";
             return View();
         }
 

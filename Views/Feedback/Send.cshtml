@@ -1,10 +1,12 @@
 ﻿
 @{
     ViewBag.Title = "Send Feedback";
+    ViewData["selectedNav"] = "SendFeedback";
     Layout = "~/Views/Layout/Layout.cshtml";
 }
 
 <form action="/feedback/send" method="post">
+    @Html.AntiForgeryToken()
     <label for="email">Email (optional): </label>
     <input name="email" type="email" />
     <label for="content">Content: </label>
