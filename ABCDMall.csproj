@@ -170,6 +170,7 @@
     <Content Include="Scripts\Gallery\add.js" />
     <Content Include="Scripts\Gallery\update.js" />
     <Content Include="Scripts\Gallery\index.js" />
+    <Content Include="Scripts\Home\seat.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.js" />
@@ -291,7 +292,7 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
-    <Content Include="Views\Home\TestResult.cshtml" />
+    <Content Include="Views\Home\Result.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Layout\AdminLayout.cshtml" />
@@ -306,6 +307,7 @@
     <Content Include="Views\ShoppingCenters\Index.cshtml" />
     <Content Include="Views\ShoppingCenters\Add.cshtml" />
     <Content Include="Views\Home\Movie.cshtml" />
+    <Content Include="Views\Home\Seat.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

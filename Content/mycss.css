@@ -400,3 +400,25 @@ input::-webkit-inner-spin-button {
 .showtime-item:hover { 
     border: 1px solid black !important
 }
+
+
+.seat-normal {
+    border: 1px solid green
+}
+.seat-vip {
+    border: 1px solid red
+}
+.seat-sweet {
+    background-color: hotpink;
+    color: white
+}
+
+.seat-disabled {
+    color: white !important;
+    background-color: gray !important;
+}
+
+input[name="seats"]:checked ~ .seat {
+    background-color: darkred;
+    color: white;
+}
