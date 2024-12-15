@@ -40,6 +40,35 @@ namespace ABCDMall.Controllers
         }
 
 
+
+        //***********phần của Phuc***************
+        public ActionResult ShoppingCenters()
+        {
+            ViewData["selectedNav"] = "ShoppingCenters";
+            ViewBag.shops = db.Shops
+                              .Include(s => s.ShopType) // Nạp dữ liệu của ShopType
+                              .Where(s => s.ShopType.ID == 1)
+                              .ToList();
+            return View();
+        }
+
+        public ActionResult AboutUs()
+        {
+            ViewData["selectedNav"] = "AboutUs_ContactUs";
+            return View();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
         //Test thanh toán
         [HttpPost]
         public ActionResult Payment(List<int> seats, int total, String name, String email, int showtime)

@@ -47,6 +47,14 @@
                         Shopping Centers
                     </div>
                 </a>
+                <a href="/shoppingitems/index" class="item-nav @(ViewData["selectedNav"].ToString() == "AdminShopItems" ? "item-nav-selected" : "")">
+                    <div>
+                        <i class="fa-solid fa-box"></i>
+                    </div>
+                    <div class="fw-bold d-flex">
+                        Shopping Items
+                    </div>
+                </a>
                 <a href="/foodcourts/index" class="item-nav @(ViewData["selectedNav"].ToString() == "AdminFoodCourts" ? "item-nav-selected" : "")">
                     <div>
                         <i class="fa-solid fa-pizza-slice"></i>

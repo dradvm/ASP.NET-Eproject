@@ -179,6 +179,8 @@
     <Content Include="Scripts\Movie\index.js" />
     <Content Include="Scripts\Movie\update.js" />
     <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\ShopCenters\index.js" />
+    <Content Include="Scripts\ShopItems\index.js" />
     <Content Include="Scripts\Showtime\add.js" />
     <Content Include="Scripts\Showtime\index.js" />
     <Content Include="Scripts\Showtime\showtime.js" />
@@ -193,6 +195,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\ShoppingCentersController.cs" />
+    <Compile Include="Controllers\ShoppingItemsController.cs" />
     <Compile Include="Controllers\ShowtimeController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="Filters\AdminFilter.cs" />
@@ -310,14 +313,20 @@
     <Content Include="Views\Movie\Index.cshtml" />
     <Content Include="Views\Movie\Add.cshtml" />
     <Content Include="Views\Movie\Update.cshtml" />
-    <Content Include="Views\ShoppingCenters\Index.cshtml" />
-    <Content Include="Views\ShoppingCenters\Add.cshtml" />
     <Content Include="Views\Home\Movie.cshtml" />
     <Content Include="Views\Home\Seat.cshtml" />
     <Content Include="Views\Showtime\Index.cshtml" />
     <Content Include="Views\Showtime\Showtime.cshtml" />
     <Content Include="Views\Showtime\Add.cshtml" />
     <Content Include="Views\Ticket\Index.cshtml" />
+    <Content Include="Views\ShoppingItems\Index.cshtml" />
+    <Content Include="Views\ShoppingItems\Add.cshtml" />
+    <Content Include="Views\Home\ShoppingCenters.cshtml" />
+    <Content Include="Views\ShoppingItems\Update.cshtml" />
+    <Content Include="Views\ShoppingCenters\Index.cshtml" />
+    <Content Include="Views\ShoppingCenters\Add.cshtml" />
+    <Content Include="Views\ShoppingCenters\Update.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

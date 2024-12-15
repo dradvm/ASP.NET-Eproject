@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "ShoppingCenters";
+    ViewData["selectedNav"] = "ShoppingCenters";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+<div class="container my-5">
+    <div class="row">
+        <!-- Cột bên trái -->
+        <div class="col-md-3 bg-light border-end">
+            <h4 class="py-3 text-primary">Filter</h4>
+            <h6 class="text-secondary">Shopping Centers</h6>
+            <ul class="list-unstyled">
+                @foreach (ABCDMall.Models.Shop shop in ViewBag.shops)
+                {
+
+                    <li><a href="#" class="text-dark fw-bold text-decoration-none">@shop.Name</a></li>
+                }
+            </ul>
+        </div>
+
+        <!-- Cột bên phải -->
+        <div class="col-md-9">
+            <!-- Thanh tìm kiếm -->
+            <div class="d-flex justify-content-between align-items-center bg-secondary p-3 mb-3 ">
+                <input type="text" class="form-control w-75" placeholder="Tìm kiếm...">
+                <button class="btn btn-primary">Tìm kiếm</button>
+            </div>
+
+            <!-- Danh sách các shop -->
+            <div class="row about__container">
+                @foreach (ABCDMall.Models.Shop shop in ViewBag.shops)
+                {
+                    <div class="col-md-4 mb-3 about__container--child">
+                        <div class="card h-100">
+                            <!-- Div chứa ảnh -->
+                            <div class="card-img-container">
+                                <img src="~/Assets/Images/Shop/@shop.Logo" class="card-img-top img-fluid" alt="Shop Image">
+                            </div>
+                            <div class="card-body">
+                                <!-- Tên shop -->
+                                <h6 class="card-title text-primary">@shop.Name</h6>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+    </div>
+</div>
