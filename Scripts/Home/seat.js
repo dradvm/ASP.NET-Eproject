@@ -1,7 +1,10 @@
-﻿
+﻿const formatCurrencyVN = (amount) => {
+    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+}
 var total = 0;
-
-document.getElementById("total-text").innerText = total;
+console.log("A")
+console.log(formatCurrencyVN(total))
+document.getElementById("total-text").innerText = formatCurrencyVN(total);
 document.getElementById("total").value = total;
 const calcTotal = (e, money) => {
     var seat = e.target.id.replace("seat_check", "") - 0
@@ -11,7 +14,7 @@ const calcTotal = (e, money) => {
     else {
         total -= money
     }
-    document.getElementById("total-text").innerText = total;
+    document.getElementById("total-text").innerText = formatCurrencyVN(total);
     document.getElementById("total").value = total;
 }
 
@@ -26,7 +29,7 @@ const chooseSweetBox = (e, money) => {
     else {
         total -= money
     }
-    document.getElementById("total").innerText = total;
+    document.getElementById("total").innerText = formatCurrencyVN(total);
 }
 
 const mySubmit = () => {
