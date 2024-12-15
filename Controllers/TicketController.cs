@@ -1,4 +1,5 @@
-﻿using ABCDMall.Models;
+﻿using ABCDMall.Filters;
+using ABCDMall.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,9 +13,15 @@ namespace ABCDMall.Controllers
     {
         // GET: Ticket
         private readonly ABCDMallEntities db = new ABCDMallEntities();
+
+
+        [AdminFilter]
         public ActionResult Index(int variance = 0)
         {
-            ViewBag.movies = db.Movies.Where(movie => movie.Showtimes.Count > 0 && movie.Showtimes.Any(showtime => DbFunctions.TruncateTime(showtime.StartingTime) == DateTime.Now.AddDays(variance))).ToList();
+            DateTime date = DateTime.Now.AddDays(variance);
+            ViewBag.movies = db.Movies.Where(movie => movie.Active == 1 && movie.Showtimes.Any(showtime => DbFunctions.TruncateTime(showtime.StartingTime) == date.Date)).ToList();
+            ViewBag.date = date;
+            ViewBag.variance = variance;
             return View();
         }
         protected override void Dispose(bool disposing)
