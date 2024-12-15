@@ -146,6 +146,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\diagramcss.css" />
     <Content Include="Content\mycss.css" />
     <Content Include="Content\myStyle.css" />
     <Content Include="Global.asax" />
@@ -167,6 +168,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\Feedback\index.js" />
+    <Content Include="Scripts\Foodcourts\Index.js" />
     <Content Include="Scripts\Gallery\add.js" />
     <Content Include="Scripts\Gallery\update.js" />
     <Content Include="Scripts\Gallery\index.js" />
@@ -192,8 +194,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
+    <Compile Include="Controllers\FoodcourtsController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\ShoppingCentersController.cs" />
     <Compile Include="Controllers\ShoppingItemsController.cs" />
@@ -328,6 +332,13 @@
     <Content Include="Views\ShoppingCenters\Add.cshtml" />
     <Content Include="Views\ShoppingCenters\Update.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Foodcourts\Add.cshtml" />
+    <Content Include="Views\Foodcourts\Uppdate.cshtml" />
+    <Content Include="Views\Foodcourts\Index.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\Menu\Update.cshtml" />
+    <Content Include="Views\Menu\Add.cshtml" />
+    <Content Include="Views\Home\MallDiagram.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

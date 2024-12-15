@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
+        <link href="~/Content/diagramcss.css?v=@DateTime.Now.Ticks" rel="stylesheet" />
         <link href="~/Content/mycss.css?v=@DateTime.Now.Ticks" rel="stylesheet" />
         <link href="~/Content/myStyle.css?v=@DateTime.Now.Ticks" rel="stylesheet" />
         <script src="~/Scripts/popper.js"></script>
@@ -46,6 +47,7 @@
                     <a class="mx-3 menu-item-nav fs-7 @(ViewData["selectedNav"].ToString() == "Movies" ? "menu-item-nav-selected" : "menu-item-nav-hover")" href="/home/movie?variance=0">Movies</a>
                     <a class="mx-3 menu-item-nav fs-7 @(ViewData["selectedNav"].ToString() == "SendFeedback" ? "menu-item-nav-selected" : "menu-item-nav-hover")" href="/Feedback/Send">Send Feedback</a>
                     <a class="mx-3 menu-item-nav fs-7 @(ViewData["selectedNav"].ToString() == "ShoppingCenters" ? "menu-item-nav-selected" : "menu-item-nav-hover")" href="/home/aboutus?variance=0">AboutUs</a>
+                    <a class="mx-3 menu-item-nav fs-7 @(ViewData["selectedNav"].ToString() == "Malldiagram" ? "menu-item-nav-selected" : "menu-item-nav-hover")" href="/home/malldiagram?variance=0">Mall Diagram</a>
                 </div>
             </div>
             <div class="w-25 text-end">

@@ -58,7 +58,11 @@ namespace ABCDMall.Controllers
             return View();
         }
 
-
+        public ActionResult Malldiagram()
+        {
+            ViewData["selectedNav"] = "Malldiagram";
+            return View();
+        }
 
 
 
