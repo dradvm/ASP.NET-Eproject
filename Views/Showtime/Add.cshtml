@@ -9,9 +9,10 @@
     var fixedDate = ((DateTime)ViewBag.date).ToString("yyyy-MM-dd");
 }
 
+@Html.AntiForgeryToken()
 <div class="d-flex px-5 mt-5">
     <div class="w-25">
-        <img src="~/Assets/Images/Movie/@ViewBag.movie.Image" class="w-100 h-100"/>
+        <img src="~/Assets/Images/Movie/@ViewBag.movie.Image" class="w-100 h-100" />
     </div>
     <form id="myForm" action="/showtime/add" method="POST" class="w-50 ms-5">
         <div>
@@ -39,7 +40,7 @@
             </div>
         </div>
         <div>
-            @if(ViewBag.status == 1)
+            @if (ViewBag.status == 1)
             {
                 <div>Error</div>
             }

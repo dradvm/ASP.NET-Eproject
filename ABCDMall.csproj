@@ -194,6 +194,7 @@
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\ShoppingCentersController.cs" />
     <Compile Include="Controllers\ShowtimeController.cs" />
+    <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="Filters\AdminFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -316,6 +317,7 @@
     <Content Include="Views\Showtime\Index.cshtml" />
     <Content Include="Views\Showtime\Showtime.cshtml" />
     <Content Include="Views\Showtime\Add.cshtml" />
+    <Content Include="Views\Ticket\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

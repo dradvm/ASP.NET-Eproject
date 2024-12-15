@@ -1,4 +1,5 @@
-﻿using ABCDMall.Models;
+﻿using ABCDMall.Filters;
+using ABCDMall.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -14,12 +15,16 @@ namespace ABCDMall.Controllers
     {
         private readonly ABCDMallEntities db = new ABCDMallEntities();
         // GET: Showtime
+        [AdminFilter]
+        [ValidateAntiForgeryToken]
         public ActionResult Index()
         {
             ViewBag.Cinema = db.Cinemas.ToList();
             return View();
         }
 
+        [AdminFilter]
+        [ValidateAntiForgeryToken]
         public ActionResult Showtime(int cinema, int variance = 0)
         {
             DateTime date = DateTime.Now.Date.AddDays(variance);
@@ -29,6 +34,8 @@ namespace ABCDMall.Controllers
             return View();
         }
 
+        [AdminFilter]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(int cinema,  int movie, int variance = 0)
         {
             ViewBag.cinema = cinema;
@@ -36,7 +43,9 @@ namespace ABCDMall.Controllers
             ViewBag.movie = db.Movies.FirstOrDefault(m => m.ID == movie);
             return View();
         }
+        [AdminFilter]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(int cinema, int movie, string startingTime, string endingTime, string date)
         {
             DateTime startingT = DateTime.Parse($"{date} {startingTime}");
@@ -51,7 +60,9 @@ namespace ABCDMall.Controllers
             return Redirect("/showtime/index");
         }
 
+        [AdminFilter]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Check(int cinema, string startingTime, string endingTime, string date)
         {
             DateTime startingT = DateTime.Parse($"{date} {startingTime}");

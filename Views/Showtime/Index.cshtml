@@ -6,6 +6,7 @@
 }
 
 
+@Html.AntiForgeryToken()
 <table id="cinemas" class="table table-striped">
     <thead>
         <tr>
@@ -15,14 +16,14 @@
     </thead>
     <tbody>
         @foreach (ABCDMall.Models.Cinema cinema in ViewBag.Cinema)
-            {
-                <tr>
-                    <td class="fw-bold">Cinema @cinema.ID</td>
-                    <td>
-                        <a class="btn btn-primary" href="/showtime/showtime?cinema=@cinema.ID">Select</a>
-                    </td>
-                </tr>
-            }
+        {
+            <tr>
+                <td class="fw-bold">Cinema @cinema.ID</td>
+                <td>
+                    <a class="btn btn-primary" href="/showtime/showtime?cinema=@cinema.ID">Select</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 <script src="~/Scripts/Showtime/index.js"></script>

@@ -40,12 +40,12 @@ const mySubmit = () => {
     } else if (!form.reportValidity()) {
     } else {
         $(document).ready(() => {
-            //token = $('input[name="__RequestVerificationToken"]').val();
+            token = $('input[name="__RequestVerificationToken"]').val();
             $.ajax({
                 type: 'post',
                 url: `/showtime/check`,
                 data: {
-                    //__RequestVerificationToken: token,
+                    __RequestVerificationToken: token,
                     cinema: $("input[name='cinema']").val(),
                     date: $("input[name='date']").val(),
                     startingTime: $("input[name='startingTime']").val(),
