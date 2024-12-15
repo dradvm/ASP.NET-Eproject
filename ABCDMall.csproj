@@ -184,6 +184,7 @@
     <Content Include="Scripts\Showtime\add.js" />
     <Content Include="Scripts\Showtime\index.js" />
     <Content Include="Scripts\Showtime\showtime.js" />
+    <Content Include="Scripts\Ticket\index.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>

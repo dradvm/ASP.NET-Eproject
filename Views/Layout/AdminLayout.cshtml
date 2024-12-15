@@ -71,6 +71,22 @@
                         Movies
                     </div>
                 </a>
+                <a href="/showtime/index" class="item-nav @(ViewData["selectedNav"].ToString() == "AdminShowtime" ? "item-nav-selected" : "")">
+                    <div>
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <div class="fw-bold d-flex">
+                        Showtime
+                    </div>
+                </a>
+                <a href="/ticket/index" class="item-nav @(ViewData["selectedNav"].ToString() == "AdminTicket" ? "item-nav-selected" : "")">
+                    <div>
+                        <i class="fa-solid fa-ticket"></i>
+                    </div>
+                    <div class="fw-bold d-flex">
+                        Tickets
+                    </div>
+                </a>
                 <a href="/feedback/index" class="item-nav @(ViewData["selectedNav"].ToString() == "AdminFeedback" ? "item-nav-selected" : "")">
                     <div>
                         <i class="fa-solid fa-comments"></i>

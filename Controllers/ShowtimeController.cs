@@ -16,7 +16,6 @@ namespace ABCDMall.Controllers
         private readonly ABCDMallEntities db = new ABCDMallEntities();
         // GET: Showtime
         [AdminFilter]
-        [ValidateAntiForgeryToken]
         public ActionResult Index()
         {
             ViewBag.Cinema = db.Cinemas.ToList();
@@ -24,7 +23,6 @@ namespace ABCDMall.Controllers
         }
 
         [AdminFilter]
-        [ValidateAntiForgeryToken]
         public ActionResult Showtime(int cinema, int variance = 0)
         {
             DateTime date = DateTime.Now.Date.AddDays(variance);
@@ -35,7 +33,6 @@ namespace ABCDMall.Controllers
         }
 
         [AdminFilter]
-        [ValidateAntiForgeryToken]
         public ActionResult Add(int cinema,  int movie, int variance = 0)
         {
             ViewBag.cinema = cinema;
@@ -45,7 +42,6 @@ namespace ABCDMall.Controllers
         }
         [AdminFilter]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Add(int cinema, int movie, string startingTime, string endingTime, string date)
         {
             DateTime startingT = DateTime.Parse($"{date} {startingTime}");
@@ -62,7 +58,6 @@ namespace ABCDMall.Controllers
 
         [AdminFilter]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Check(int cinema, string startingTime, string endingTime, string date)
         {
             DateTime startingT = DateTime.Parse($"{date} {startingTime}");

@@ -45,7 +45,7 @@
                         {
                             foreach (ABCDMall.Models.Showtime showtime in movie.Showtimes)
                             {
-                                if (showtime.StartingTime.Date == DateTime.Today.AddDays(ViewBag.variance) && showtime.StartingTime > DateTime.Today)
+                                if (showtime.StartingTime.Date == DateTime.Today.AddDays(ViewBag.variance) && showtime.StartingTime > DateTime.Today && showtime.Cinema == ViewBag.cinema)
                                 {
                                     <div class="border py-1 me-3 text-center border h2 bg-white rounded-1 fs-7" style="width: 100px">
                                         <div class="fs-7">

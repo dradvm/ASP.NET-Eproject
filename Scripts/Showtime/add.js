@@ -21,6 +21,9 @@
     });
 }
 
+$('#startingTime').on('keydown', function (e) {
+    e.preventDefault(); // Ngăn hành vi nhập thủ công
+});
 
 const mySubmit = () => {
     const form = document.querySelector("#myForm");
