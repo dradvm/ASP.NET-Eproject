@@ -1,4 +1,5 @@
 ﻿using ABCDMall.Models;
+using ABCDMall.Service;
 using ABCDMall.Services;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web.Mvc;
 using System.Windows.Documents;
+using System.Xml.Linq;
 
 namespace ABCDMall.Controllers
 {
@@ -42,20 +44,12 @@ namespace ABCDMall.Controllers
         [HttpPost]
         public ActionResult Payment(List<int> seats, int total, String name, String email, int showtime)
         {
-            List<Ticket> tickets = seats.Select(seat => new Ticket
-            {
-                Seat = seat,
-                Showtime = showtime,
-                CustomerName = name,
-                CustomerEmail = email,
-                Price = db.Seats.FirstOrDefault(x => x.ID == seat)?.SeatType1.Price ?? 0,
-                PaymentTime = DateTime.Now
-            }).ToList();
-            db.Tickets.AddRange(tickets);
-            db.SaveChanges();
+            
 
-            Session["CurrentTicketIds"] = tickets.Select(t => t.ID).ToList();
-
+            Session["CurrentTicketIds"] = seats;
+            Session["Name"] = name;
+            Session["Email"] = email;
+            Session["Showtime"] = showtime;
             VNPayService vnp = new VNPayService();
             //Truyền số tiền cần thanh toán, nội dung thanh toán, URL trả về
             return Redirect(vnp.CreateRequestUrl(total, "Test", ConfigurationManager.AppSettings["weburl"] + "/home/result"));
@@ -68,27 +62,74 @@ namespace ABCDMall.Controllers
             //True nếu thanh toán thành công, False nếu ngược lại
             var check = vnp.ValidateSignature(Request);
             ViewBag.Status = check;
-            var ids = Session["CurrentTicketIds"] as List<int>;
-
-            if (ids == null || !ids.Any())
-            {
-                // Không có vé nào cần xử lý
-                ViewBag.Status = false;
-                return View();
-            }
-
-            var tickets = db.Tickets.Where(t => ids.Contains(t.ID) && t.PaymentTime == null).ToList();
 
             if (check)
             {
+                List<int> seats = (List<int>) Session["CurrentTicketIds"];
+                var bodyTickets = "";
+                int y = Convert.ToInt32(Session["Showtime"] ?? 0);
+                Showtime showtime = db.Showtimes.FirstOrDefault(x => x.ID == y);
+                List<Ticket> tickets = seats.Select(seat => new Ticket
+                {
+                    Seat = seat,
+                    Showtime = showtime.ID,
+                    CustomerName = Session["Name"] as String,
+                    CustomerEmail = Session["Email"] as String,
+                    Price = db.Seats.FirstOrDefault(x => x.ID == seat)?.SeatType1.Price ?? 0,
+                    PaymentTime = DateTime.Now
+                }).ToList();
+                db.Tickets.AddRange(tickets);
                 foreach (var ticket in tickets)
                 {
                     ticket.PaymentTime = DateTime.Now;
+                    bodyTickets += $@"<tr>
+                                    <td>
+                                        {ticket.Seat1.Name}
+                                    </td>
+                                    <td>
+                                        {ticket.Seat1.SeatType1.Name}
+                                    </td>
+                                    <td>
+                                        {ticket.Seat1.SeatType1.Price}
+                                    </td>
+                                </tr>";
                 }
+                EmailSender es = new EmailSender();
+                string emailBody = $@"
+                <html>
+
+                <body>
+                    <p>Dear {Session["Name"] as String},</p>
+                    <p>We are pleased to inform you that your ticket has been successfully booked. Below are the details of your ticket:
+                    </p>
+                    <div>
+                        <h3>Ticket Information</h3>
+                        <h4>Movie: {showtime.Movie1.Name}</h4>
+                        <h4>Cinema: {showtime.Cinema1.Name}</h4>
+                        <h4>Showtime: {showtime.StartingTime}</h4>
+                        <table border='1'>
+                            <thead>
+                                <th>Seat</th>
+                                <th>Seat Type</th>
+                                <th>Price</th>
+                            </thead>
+                            <tbody>
+                                {bodyTickets}
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>Thank you for booking with us. We hope you have a great experience!</p>
+                    <footer>Best regards, <br> ABCD Mall Support Team</footer>
+                </body>
+
+                </html>";
+                ViewBag.tickets = tickets;
+                ViewBag.showtime = showtime;
+                es.SendEmail(Session["Email"] as String, "Booked Tickets Information", emailBody);
             }
             else
             {
-                db.Tickets.RemoveRange(tickets);
+
             }
             db.SaveChanges();
             return View();

@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Add Showtime";
+    ViewData["selectedNav"] = "AdminShowtime";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+@{
+    var fixedDate = ((DateTime)ViewBag.date).ToString("yyyy-MM-dd");
+}
+
+<div class="d-flex px-5 mt-5">
+    <div class="w-25">
+        <img src="~/Assets/Images/Movie/@ViewBag.movie.Image" class="w-100 h-100"/>
+    </div>
+    <form id="myForm" action="/showtime/add" method="POST" class="w-50 ms-5">
+        <div>
+
+            <input type="hidden" name="cinema" value="@ViewBag.cinema" />
+            <input type="hidden" name="variance" value="@ViewBag.variance" />
+            <input type="hidden" name="movie" value="@ViewBag.movie.ID" />
+        </div>
+        <div class="w-50">
+            <label for="basic-url" class="form-label">Date</label>
+            <div class="input-group mb-3">
+                <input type="date" name="date" value="@fixedDate" readonly class="form-control" />
+            </div>
+        </div>
+        <div class="w-50">
+            <label for="basic-url" class="form-label">Starting Time</label>
+            <div class="input-group mb-3">
+                <input oninput="setupAutoCalculateTime(@ViewBag.movie.Duration)" type="time" id="startingTime" name="startingTime" required class="form-control" />
+            </div>
+        </div>
+        <div class="w-50">
+            <label for="basic-url" class="form-label">Ending Time</label>
+            <div class="input-group mb-3">
+                <input readonly type="time" id="endingTime" name="endingTime" required class="form-control" />
+            </div>
+        </div>
+        <div>
+            @if(ViewBag.status == 1)
+            {
+                <div>Error</div>
+            }
+        </div>
+        <button type="button" onclick="mySubmit()" class="w-100 mt-3 text-decoration-none my-btn bg-main text-white px-3 py-1 rounded-1">
+            Add
+        </button>
+    </form>
+</div>
+
+<script src="~/Scripts/Showtime/add.js">
+
+
+
+</script>
+
