@@ -1,111 +1,137 @@
-﻿.container {
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 20px 0;
+    color: #444;
+}
+
+.mall_layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.mall_layout_title {
+    background-color: #e0f7fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.mall_layout_group1 {
     display: flex;
-    flex-direction: row;
-    height: 100vh;
+    justify-content: space-around;
+    margin-bottom: 20px;
 }
 
-.menu {
-    width: 20%;
-    background-color: #f4f4f4;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-    .menu div {
-        margin-bottom: 15px;
-    }
-
-    .menu a {
-        text-decoration: none;
-        color: #333;
-    }
-
-        .menu a:hover {
-            color: #007BFF;
-        }
-
-.product-display {
+.group1_f {
+    background-color: #ffccbc;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
     flex: 1;
+    margin: 0 10px;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.mall_layout_group2 {
+    background-color: #e8f5e9;
     padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.group2_title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2e7d32;
+}
+
+.group2_description {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #e0d7d7;
+}
+
+
+.group2_shops {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 400px;
+    max-width: 20%;
     overflow-y: auto;
 }
 
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+
+.group2_shops_name {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #eff1ef;
 }
 
-.product {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-    background-color: #fff;
-    cursor: pointer;
-    transition: transform 0.2s;
+.group2_shops_type {
+    font-size: 0.9rem;
+    color: #757575;
 }
 
-    .product:hover {
-        transform: scale(1.05);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-.product-info div {
-    margin-bottom: 10px;
-}
-
-.product-detail {
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-}
-
-    .product-detail img {
-        max-width: 100%;
-        height: auto;
-        margin-bottom: 15px;
-    }
-
-    .product-detail button {
-        padding: 10px 15px;
-        background-color: #007BFF;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-        .product-detail button:hover {
-            background-color: #0056b3;
-        }
-
-.search-bar {
-    margin: 10px 0;
-}
-
-#search {
-    padding: 8px;
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-    display: block;
-}
-
-.extra-detail {
-    margin-top: 20px;
+.group2_shops_name,
+.group2_shops_type,
+.group2_shops_logo,
+.group2_shops_menu {
     padding: 10px;
-    background-color: #f9f9f9;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+    font-size: 0.95rem;
 }
 
-.product-detail {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #f0f0f0;
+.group2_shops_logo {
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    background-color: #f4f4f9;
 }
 
-.product-info {
-    padding: 5px 0;
+.group2_shops_menu {
+    font-size: 0.85rem;
+    color: #424242;
+}
+
+.mall_layout_group3 {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.group3_menu {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #bf360c;
+}
+
+.group3_menu_item {
+    background-color: #a665fc;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
