@@ -17,8 +17,7 @@ namespace ABCDMall.Controllers
         [AdminFilter]
         public ActionResult Index()
         {
-            ViewBag.ShoppingItems = db.Products.ToList();
-            //var product = db.Products.Include(p => p.Shop).ToList();
+            ViewBag.ShoppingItems = db.Products.Where(product => product.Shop1.ShopType.ID == 1).ToList();
             return View();
         }
         public ActionResult Send(int status = 1)
