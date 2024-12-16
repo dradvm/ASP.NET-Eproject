@@ -64,16 +64,6 @@ namespace ABCDMall.Controllers
             return View();
         }
 
-
-
-
-
-
-
-
-
-
-        //Test thanh toán
         [HttpPost]
         public ActionResult Payment(List<int> seats, int total, String name, String email, int showtime)
         {
@@ -88,7 +78,6 @@ namespace ABCDMall.Controllers
             return Redirect(vnp.CreateRequestUrl(total, "Test", ConfigurationManager.AppSettings["weburl"] + "/home/result"));
         }
 
-        //Test xử lý kết quả thanh toán
         public ActionResult Result()
         {
             VNPayService vnp = new VNPayService();

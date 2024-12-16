@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Menu";
     ViewData["selectedNav"] = "AdminMenu";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
@@ -24,16 +24,11 @@
     <tbody>
         @foreach (ABCDMall.Models.Product pro in ViewBag.products)
          {
-              if (pro = db.Shops.Include(s => s.ShopType).Where(s => s.ShopType.ID == 2))
-                {
-
-                }
-
                 <tr>
 
                 <td> @pro.Name </td>
                 <td >
-                    < img src = "~/Assets/Images/Product/@pro.Image" alt = "Error" class="img-thumbnail" style="max-width: 100px" />
+                    <img src="/Assets/Images/Product/@pro.Image" alt = "Error" class="img-thumbnail" style="max-width: 100px" />
                 </td>
                 <td>@pro.Description</td>
                 <td>

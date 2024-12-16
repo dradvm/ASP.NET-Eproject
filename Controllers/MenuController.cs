@@ -19,7 +19,7 @@ namespace ABCDMall.Controllers
         [AdminFilter]
         public ActionResult Index()
         {
-            ViewBag.products = db.Products.ToList();
+            ViewBag.products = db.Products.Where(product => product.Shop1.ShopType.ID == 2).ToList();
             return View();
         }
 
