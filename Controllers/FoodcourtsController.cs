@@ -1,4 +1,4 @@
-﻿using ABCDMall.Filters;
+using ABCDMall.Filters;
 using ABCDMall.Models;
 using ABCDMall.Services;
 using System;

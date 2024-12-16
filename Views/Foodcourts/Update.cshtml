@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewBag.Title = "Update Food Courts";
     ViewData["selectedNav"] = "AdminFoodCourts";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
@@ -6,7 +6,7 @@
 
 
 <div class="px-4 pt-4">
-    <form method="post" action="~/foodcourts/update.cshtml" enctype="multipart/form-data" class="d-flex justify-content-between align-items-center">
+    <form method="post" action="/foodcourts/update" enctype="multipart/form-data" class="d-flex justify-content-between align-items-center">
         @Html.AntiForgeryToken()
 
         <input type="hidden" name="ID" value="@Model.ID" />
@@ -106,3 +106,4 @@
         }
     }
 </script>
+
