@@ -13,30 +13,20 @@
 
     </head>
     <body>
-        <div class="d-flex align-items-center justify-content-between px-5 bg-primary">
+        <div class="d-flex align-items-center justify-content-between px-5 bg-primary py-2">
             <div style="width: 33.33%">
             </div>
             <div class="text-center text-white fw-bold" style="width: 33.33%">
                 Embrace the Joy of Shopping
             </div>
             <div style="width: 33.33%">
-                <div class="d-flex align-items-center justify-content-end py-1">
-                    <form class="d-flex align-items-center position-relative">
-
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn position-absolute top-50 translate-middle-y end-100" type="submit">
-                            <i class="fa-solid fa-magnifying-glass text-white"></i>
-                        </button>
-
-                    </form>
-                </div>
             </div>
         </div>
         <div class="d-flex px-5 shadow-sm align-items-center py-3">
-            <div class="w-25">
-                <img src="~/Assets/Images/logo.png" class="w-25" />
+            <div class="" style="width: 10%">
+                <img src="~/Assets/Images/logo.png" class="w-75" />
             </div>
-            <div class="w-50 d-flex justify-content-around">
+            <div class="d-flex justify-content-around" style="width: 80%">
                 <div class="d-flex align-items-center">
                     <a class="mx-3 menu-item-nav fs-7 @(ViewData["selectedNav"].ToString() == "Home" ? "menu-item-nav-selected" : "menu-item-nav-hover")" href="/">Home</a>
                     <a class="mx-3 menu-item-nav fs-7 @(ViewData["selectedNav"].ToString() == "ShoppingCenters" ? "menu-item-nav-selected" : "menu-item-nav-hover")" href="/home/shoppingcenters?variance=0">Shopping Centers</a>
@@ -47,7 +37,7 @@
                     <a class="mx-3 menu-item-nav fs-7 @(ViewData["selectedNav"].ToString() == "Malldiagram" ? "menu-item-nav-selected" : "menu-item-nav-hover")" href="/home/malldiagram?variance=0">Mall Diagram</a>
                 </div>
             </div>
-            <div class="w-25 text-end">
+            <div class="text-end" style="width: 10%">
                 <a class="menu-item-nav fs-7 fw-bold text-white bg-main px-3 py-2 rounded-1" href="/admin/login">Log in</a>
             </div>
         </div>

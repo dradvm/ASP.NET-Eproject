@@ -4,14 +4,37 @@
     ViewData["selectedNav"] = "Home";
     Layout = "~/Views/Layout/Layout.cshtml";
 }
-
-<div class="container">
+<div id="carouselExampleAutoplaying" class="carousel slide w-100" data-bs-ride="carousel"  style="height: 500px">
+    <div class="carousel-inner h-100">
+        <div class="carousel-item active h-100">
+            <img src="~/Assets/Images/banner.jpg" class="w-100 h-100" />
+        </div>
+        <div class="carousel-item h-100">
+            <img src="~/Assets/Images/banner2.jpg" class="w-100 h-100" />
+        </div>
+        <div class="carousel-item h-100">
+            <img src="~/Assets/Images/banner3.jpg" class="w-100 h-100" />
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<div class="container my-5">
+    <div class="d-flex my-3 justify-content-around">
+        <div class="fs-3 fw-bold">Gallery</div>
+    </div>
     <div class="row my-row gy-4">
         @foreach (ABCDMall.Models.Gallery gallery in ViewBag.gallery)
         {
             <div class="col-md-3">
                 <div class="border border-secondary-subtle border-3 shadow position-relative">
-                    <img src="~/Assets/Images/Gallery/@gallery.Image" width="100%" height="250px"/>
+                    <img src="~/Assets/Images/Gallery/@gallery.Image" width="100%" height="250px" />
                     <div class="position-absolute w-100 h-100 top-0 start-0 " style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);"></div>
                     <div class="position-absolute bottom-0 fw-bold text-white ms-2 mb-1 truncate-2-lines" style=" width: 95%">@gallery.Description</div>
                 </div>
