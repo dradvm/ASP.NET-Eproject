@@ -4,6 +4,7 @@
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
 
+<link href="~/Content/myStyle.css?v=@DateTime.Now.Ticks" rel="stylesheet" />
 <div class="px-4 pt-4">
     <form method="post" action="/shoppingcenters/update" enctype="multipart/form-data" class="d-flex justify-content-between align-items-center">
         @Html.AntiForgeryToken()
@@ -25,14 +26,9 @@
                 <div style="width: 48%">
                     <label for="shop_type" class="form-label fs-7 fw-bold" style="margin-bottom: 0;">Shop Type</label>
                     <div class="input-group my-input-form">
-                        <select class="form-select" name="ShopTypeID" id="shop_type" required>
-                            <option value="" selected disabled>-- Select Shop Type --</option>
-                            @foreach (var shop in (IEnumerable<SelectListItem>)ViewBag.shops)
-                            {
-                                <option value="@shop.Value" @(shop.Value == Model.ShopType.ID.ToString() ? "selected" : "")>@shop.Text</option>
-
-                            }
-                        </select>
+                        <span class="input-group-text"><i class="fa-solid fa-shop"></i></span>
+                        <input type="text" class="form-control" value="Shopping Center" readonly />
+                        <input type="hidden" name="ShopTypeID" value="1" />
                     </div>
                 </div>
 

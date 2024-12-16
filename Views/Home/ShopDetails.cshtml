@@ -1,0 +1,48 @@
+﻿@model ABCDMall.Models.Shop
+
+@{
+    ViewBag.Title = "Shop Details";
+    ViewData["selectedNav"] = "ShoppingDetails";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <!-- Phần hình ảnh cố định kích cỡ -->
+        <div class="card-header p-0">
+            <img src="~/Assets/Images/Shop/@Model.Logo"
+                 class="img-fluid w-100 rounded-top"
+                 alt="@Model.Name"
+                 style="height: 300px; object-fit: cover;">
+        </div>
+        <!-- Phần thông tin shop -->
+        <div class="card-body">
+            <h3 class="text-primary mb-3">@Model.Name</h3>
+            <p class="text-secondary" style="text-align: justify; line-height: 1.6;">
+                @Model.Description
+            </p>
+            <!-- Số tầng -->
+            <div class="mt-4">
+                <h5 class="text-dark"><i class="fas fa-layer-group"></i> Number of Floors: <span class="badge bg-info">@Model.Floor</span></h5>
+            </div>
+        </div>
+        <!-- Phần sản phẩm -->
+        <div class="card-body">
+            <h4 class="text-dark mb-4">Products</h4>
+            <div class="d-flex flex-wrap gap-3">
+                @foreach (var product in Model.Products)
+                {
+                    <div class="card" style="width: 18rem; flex: 1 1 calc(25% - 1rem); max-width: 18rem;">
+                        <img src="~/Assets/Images/Product/@product.Image"
+                             class="card-img-top rounded"
+                             alt="@product.Name"
+                             style="height: 180px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">@product.Name</h5>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

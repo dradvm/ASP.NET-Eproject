@@ -58,6 +58,26 @@ namespace ABCDMall.Controllers
             return View();
         }
 
+        public ActionResult ShopDetails(int id)
+        {
+            var shop = db.Shops.FirstOrDefault(s => s.ID == id);
+
+            if (shop == null)
+            {
+                // Nếu không tìm thấy shop, hiển thị trang lỗi
+                ViewBag.ErrorMessage = "Shop not found!";
+                return View("Error");
+            }
+
+            // Trả về view với dữ liệu shop
+            return View(shop);
+        }
+
+
+
+
+
+
         public ActionResult Malldiagram()
         {
             ViewData["selectedNav"] = "Malldiagram";

@@ -14,46 +14,60 @@
     font-weight: bold; /* Chữ đậm */
 }
 
-    .btn-group .btn i {
-        font-size: 1.2rem; /* Kích thước icon lớn hơn */
-    }
+.btn-group .btn i {
+    font-size: 1.2rem; /* Kích thước icon lớn hơn */
+}
 
 
 
 /************************************************************************************************************/
 /**===========css cho trang Shopping centers==============****/
-.about__container{
-    padding: 10px;
+
+.about__card {
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    flex-wrap: wrap;
 }
-.about__container--child{
-    padding-right: 30px;
+
+.card {
+    margin-left: 10px;
+    flex: 0 0 30%; 
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* Nhẹ hơn */
+    border-radius: 6px;
+    transition: transform 0.2s ease-in-out;
 }
-/*div ben trai*/
-.card-img-container {
-    height: 66.66%; /* Chiếm 2/3 chiều cao của card */
-    overflow: hidden;
-    position: relative;
-    padding: 40px;
+
+.card:hover {
+    transform: scale(1.05); /* Phóng to nhẹ khi hover */
+}
+
+.card-header img {
+    object-fit: cover;
+    height: 300px;
 }
 
 .card-img-top {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 
-.card-body {
-    border-radius: 16px;
-    border: 1px solid var(--Border, #EDEDED);
-    background: var(--Backgorund-1, #F5F5F5);
-    padding: 20px;
-    text-align: center; /* Căn giữa tên shop */
+.card-footer .btn {
+    font-size: 11px;
+    padding: 4px 0;
+    font-weight: bold;
 }
 
-.card-title {
-    font-size: 20px;
-    margin-top: 10px; /* Thêm khoảng cách giữa ảnh và tên */
-}
+
+
+
+
+
+
+
+
+
 
 
 

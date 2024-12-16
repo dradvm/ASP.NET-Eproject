@@ -34,21 +34,10 @@ namespace ABCDMall.Controllers
 
         //**************************************ADD***********************************
         [AdminFilter]
-        public ActionResult Add(int status = 1)
+        public ActionResult Add(int status = 1, string message = "")
         {
-            //ViewBag.status = status;
-            //ViewBag.shops = db.ShopTypes.ToList();
-            //return View();
-            var shopTypes = db.ShopTypes
-                                .Where(s => s.ID == 1)
-                                .ToList(); // Lấy danh sách các ShopType từ database
-            var shopTypeItems = shopTypes.Select(st => new SelectListItem
-            {
-                Value = st.ID.ToString(), // Giá trị của SelectListItem là ID của ShopType
-                Text = st.Name // Hiển thị tên ShopType trong dropdown
-            }).ToList();
-
-            ViewBag.shops = shopTypeItems; // Gán vào ViewBag để truyền sang View
+            ViewBag.status = status;
+            ViewBag.Message = message;
             return View();
         }
 
@@ -57,48 +46,69 @@ namespace ABCDMall.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Add(string name, HttpPostedFileBase logo, int shopTypeID, int floor, string description)
         {
-            Shop shop = new Shop();
-            shop.ShopeType = shopTypeID;
-            shop.Floor = floor;
-            shop.Name = name?.Trim();
-            shop.Description = description?.Trim();
+            Shop shop = new Shop
+            {
+                ShopeType = 1, // Loại cửa hàng (mặc định)
+                Floor = floor,
+                Name = name?.Trim(),
+                Description = description?.Trim()
+            };
 
             // Kiểm tra tên cửa hàng
             if (string.IsNullOrEmpty(shop.Name))
             {
-                return Redirect("/shoppingcenters/add?status=0");
+                ViewBag.status = 0;
+                ViewBag.Message = "Shop name is required.";
+                return View();
             }
 
-            // Kiểm tra hình ảnh
+            // Kiểm tra logo
             if (logo == null || logo.ContentLength == 0)
             {
-                return Redirect("/shoppingcenters/add?status=-1");
+                ViewBag.status = -1;
+                ViewBag.Message = "A logo must be selected.";
+                return View();
             }
 
             // Kiểm tra định dạng hình ảnh
             string[] supported = { ".png", ".jpg", ".jpeg", ".svg" };
             if (!supported.Any(format => string.Equals(format, Path.GetExtension(logo.FileName), StringComparison.OrdinalIgnoreCase)))
             {
-                return Redirect("/shoppingcenters/add?status=-2");
+                ViewBag.status = -2;
+                ViewBag.Message = "The selected image format is not supported.";
+                return View();
             }
 
             // Kiểm tra kích thước hình ảnh
             if (logo.ContentLength > 10000000)
             {
-                return Redirect("/shoppingcenters/add?status=-3");
+                ViewBag.status = -3;
+                ViewBag.Message = "The image size must not exceed 10MB.";
+                return View();
             }
 
             // Lưu trữ hình ảnh
-            shop.Logo = Path.GetFileNameWithoutExtension(logo.FileName) + DateTime.Now.ToString("yyyyMMddHHmmss") + Path.GetExtension(logo.FileName);
-            logo.SaveAs(Path.Combine(Server.MapPath("~/Assets/Images/Shop"), shop.Logo));
+            try
+            {
+                string fileName = Path.GetFileNameWithoutExtension(logo.FileName) + DateTime.Now.ToString("yyyyMMddHHmmss") + Path.GetExtension(logo.FileName);
+                string path = Path.Combine(Server.MapPath("~/Assets/Images/Shop"), fileName);
 
+                logo.SaveAs(path);
+                shop.Logo = fileName;
+            }
+            catch (Exception ex)
+            {
+                ViewBag.status = -4;
+                ViewBag.Message = $"Failed to save the logo: {ex.Message}";
+                return View();
+            }
+
+            // Thêm cửa hàng vào database
             db.Shops.Add(shop);
             db.SaveChanges();
 
-            return Redirect("/shoppingcenters/index");
+            return RedirectToAction("Index", "ShoppingCenters");
         }
-
-
 
 
 
@@ -116,26 +126,15 @@ namespace ABCDMall.Controllers
                 return HttpNotFound();
             }
 
-            // Lấy danh sách các loại cửa hàng từ database
-            var shopTypes = db.ShopTypes.ToList();
-            var shopTypeItems = shopTypes.Select(st => new SelectListItem
-            {
-                Value = st.ID.ToString(),
-                Text = st.Name
-            }).ToList();
-
-            // Truyền dữ liệu vào ViewBag
-            ViewBag.shops = shopTypeItems; // Danh sách các loại cửa hàng
-            ViewBag.status = status; // Trạng thái trả về từ POST
-
-            return View(shop); // Truyền đối tượng Shop vào View
+            // Truyền dữ liệu vào ViewBag để hiển thị trạng thái
+            ViewBag.status = status;
+            return View(shop);
         }
 
-        // POST: ShoppingCenters/Update/5
         [AdminFilter]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Update(int id, string name, HttpPostedFileBase logo, int shopTypeID, int floor, string description)
+        public ActionResult Update(int id, string name, HttpPostedFileBase logo, int floor, string description)
         {
             // Lấy cửa hàng cần cập nhật
             Shop shop = db.Shops.FirstOrDefault(s => s.ID == id);
@@ -147,50 +146,49 @@ namespace ABCDMall.Controllers
             // Kiểm tra và cập nhật các trường dữ liệu
             if (string.IsNullOrEmpty(name?.Trim()))
             {
-                return Redirect($"/shoppingcenters/update/{id}?status=0"); // Kiểm tra tên cửa hàng
+                return Redirect($"/shoppingcenters/update/{id}?status=0"); // Tên cửa hàng không được để trống
             }
             shop.Name = name.Trim();
 
             if (string.IsNullOrEmpty(description?.Trim()))
             {
-                return Redirect($"/shoppingcenters/update/{id}?status=-6"); // Kiểm tra mô tả
+                return Redirect($"/shoppingcenters/update/{id}?status=-6"); // Mô tả không được để trống
             }
             shop.Description = description.Trim();
 
-            // Cập nhật ShopType và Floor
-            shop.ShopeType = shopTypeID;
+            // Cập nhật Floor
             shop.Floor = floor;
 
-            // Kiểm tra và xử lý logo (nếu có)
+            // Xử lý logo nếu có
             if (logo != null && logo.ContentLength > 0)
             {
                 string[] supported = { ".png", ".jpg", ".jpeg", ".svg" };
                 if (!supported.Any(format => string.Equals(format, Path.GetExtension(logo.FileName), StringComparison.OrdinalIgnoreCase)))
                 {
-                    return Redirect($"/shoppingcenters/update/{id}?status=-2"); // Kiểm tra định dạng ảnh
+                    return Redirect($"/shoppingcenters/update/{id}?status=-2"); // Định dạng ảnh không hợp lệ
                 }
 
                 if (logo.ContentLength > 10000000)
                 {
-                    return Redirect($"/shoppingcenters/update/{id}?status=-3"); // Kiểm tra kích thước ảnh
+                    return Redirect($"/shoppingcenters/update/{id}?status=-3"); // Kích thước ảnh vượt quá giới hạn
                 }
 
-                // Xóa ảnh cũ (nếu có)
+                // Xóa ảnh cũ
                 string oldLogo = shop.Logo;
-                if (System.IO.File.Exists(Server.MapPath("~/Assets/Images/Shop/" + oldLogo)))
+                string oldLogoPath = Server.MapPath("~/Assets/Images/Shop/" + oldLogo);
+                if (System.IO.File.Exists(oldLogoPath))
                 {
-                    System.IO.File.Delete(Server.MapPath("~/Assets/Images/Shop/" + oldLogo));
+                    System.IO.File.Delete(oldLogoPath);
                 }
 
-                // Lưu trữ logo mới
+                // Lưu ảnh mới
                 shop.Logo = Path.GetFileNameWithoutExtension(logo.FileName) + DateTime.Now.ToString("yyyyMMddHHmmss") + Path.GetExtension(logo.FileName);
                 logo.SaveAs(Path.Combine(Server.MapPath("~/Assets/Images/Shop"), shop.Logo));
             }
 
             // Lưu thay đổi vào cơ sở dữ liệu
             db.SaveChanges();
-
-            return Redirect("/shoppingcenters/index"); // Điều hướng về trang danh sách
+            return Redirect("/shoppingcenters/index"); // Điều hướng về danh sách
         }
 
 

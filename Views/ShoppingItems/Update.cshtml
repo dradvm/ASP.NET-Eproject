@@ -1,10 +1,11 @@
 ﻿
 @{
-    ViewBag.Title = "Add Shopping items";
+    ViewBag.Title = "Update Shopping items";
     ViewData["selectedNav"] = "AdminShopItems";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
 
+<link href="~/Content/myStyle.css?v=@DateTime.Now.Ticks" rel="stylesheet" />
 <div class="px-4 pt-4">
     <form method="post" action="/shoppingitems/update" enctype="multipart/form-data" class="d-flex justify-content-between align-items-center">
         @Html.AntiForgeryToken()
@@ -13,7 +14,7 @@
         <div style="width: 30%">
             <div class="vstack gap-3">
                 <div class="w-100" style="height: 300px; border: 1px solid #ccc;">
-                    <img id="preview" src="~/Assets/Images/@Model.Image" class="w-100 h-100" style="object-fit: contain;" />
+                    <img id="preview" src="~/Assets/Images/Product/@Model.Image" class="w-100 h-100" style="object-fit: contain;" />
                 </div>
                 <input class="d-none" id="Logo" name="Image" type="file" accept="image/*" onchange="loadImagePreview()" />
                 <button type="button" class="my-btn bg-main text-white px-3 py-1 rounded-1 mt-3" onclick="triggerFileInput()">Select Image</button>

@@ -5,6 +5,8 @@
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
 
+<link href="~/Content/myStyle.css?v=@DateTime.Now.Ticks" rel="stylesheet" />
+
 <div class="px-4 pt-4">
     <form method="post" action="/shoppingitems/add" enctype="multipart/form-data" class="d-flex justify-content-between align-items-center">
         @Html.AntiForgeryToken()
@@ -17,6 +19,13 @@
                 <input class="d-none" id="Logo" name="image" type="file" accept="image/*" onchange="loadImagePreview()" />
                 <button type="button" class="my-btn bg-main text-white px-3 py-1 rounded-1 mt-3" onclick="triggerFileInput()">Select Image</button>
             </div>
+            <!-- Hiển thị lỗi -->
+            <div class="text-danger mt-3">
+                @if (ViewBag.status != null)
+                {
+                    <div>@ViewBag.Message</div>
+                }
+            </div>
         </div>
 
         <div style="width: 60%">
@@ -25,7 +34,7 @@
                     <label for="shop" class="form-label fs-7 fw-bold" style="margin-bottom: 0;">Shop</label>
                     <div class="input-group my-input-form">
                         <select class="form-select" name="ShopID" id="shop" required>
-                            <option value="" selected disabled>-- Select Shop Type --</option>
+                            <option value="" selected disabled>-- Select Shop Name --</option>
                             @foreach (var shop in (IEnumerable<SelectListItem>)ViewBag.shoppingitems)
                             {
                                 <option value="@shop.Value">@shop.Text</option>
@@ -62,6 +71,18 @@
                     else if (ViewBag.status == -2)
                     {
                         <div>The chosen image format is not supported</div>
+                    }
+                    else if (ViewBag.status == 4)
+                    {
+                        <div>Product name is required.</div>
+                    }
+                    else if (ViewBag.status == 5)
+                    {
+                        <div>Product description is required.</div>
+                    }
+                    else if (ViewBag.status == 6)
+                    {
+                        <div>You must select a shop.</div>
                     }
                 }
             </div>

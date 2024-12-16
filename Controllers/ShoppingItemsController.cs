@@ -34,14 +34,45 @@ namespace ABCDMall.Controllers
         [AdminFilter]
         public ActionResult Add(int status = 1)
         {
-            var shop = db.Shops.ToList(); // Lấy danh sách các ShopType từ database
+            var shop = db.Shops.ToList(); // Fetch list of shops from the database
             var shopItems = shop.Select(st => new SelectListItem
             {
-                Value = st.ID.ToString(), // Giá trị của SelectListItem là ID của Shop
-                Text = st.Name // Hiển thị tên ShopID trong dropdown
+                Value = st.ID.ToString(), // Shop ID
+                Text = st.Name // Display shop name
             }).ToList();
 
-            ViewBag.shoppingitems = shopItems; // Gán vào ViewBag để truyền sang View
+            ViewBag.shoppingitems = shopItems; // Pass shops to the ViewBag
+            ViewBag.status = status;
+
+            // Set error messages based on the status code
+            switch (status)
+            {
+                case 0:
+                    ViewBag.Message = "Product name is required.";
+                    break;
+                case -1:
+                    ViewBag.Message = "An image must be selected.";
+                    break;
+                case -2:
+                    ViewBag.Message = "The selected image format is not supported.";
+                    break;
+                case -3:
+                    ViewBag.Message = "The image size must not exceed 10MB.";
+                    break;
+                case 4:
+                    ViewBag.Message = "Product name is required.";
+                    break;
+                case 5:
+                    ViewBag.Message = "Product description is required.";
+                    break;
+                case 6:
+                    ViewBag.Message = "You must select a shop.";
+                    break;
+                default:
+                    ViewBag.Message = string.Empty;
+                    break;
+            }
+
             return View();
         }
 
@@ -50,52 +81,58 @@ namespace ABCDMall.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Add(string name, HttpPostedFileBase image, int shopID, string description)
         {
-            Product pro = new Product();
-            pro.Shop = shopID;
-            pro.Name = name?.Trim();
-            pro.Description = description?.Trim();
+            // Create Product object and populate fields
+            Product pro = new Product
+            {
+                Shop = shopID,
+                Name = name?.Trim(),
+                Description = description?.Trim()
+            };
 
-            // Kiểm tra tên sản phẩm
+            // Validate fields
             if (string.IsNullOrEmpty(pro.Name))
             {
                 return Redirect("/shoppingitems/add?status=0");
             }
 
-            // Kiểm tra hình ảnh
             if (image == null || image.ContentLength == 0)
             {
                 return Redirect("/shoppingitems/add?status=-1");
             }
 
-            // Kiểm tra định dạng hình ảnh
             string[] supported = { ".png", ".jpg", ".jpeg", ".svg" };
             if (!supported.Any(format => string.Equals(format, Path.GetExtension(image.FileName), StringComparison.OrdinalIgnoreCase)))
             {
                 return Redirect("/shoppingitems/add?status=-2");
             }
 
-            // Kiểm tra kích thước hình ảnh
             if (image.ContentLength > 10000000) // 10MB
             {
                 return Redirect("/shoppingitems/add?status=-3");
             }
 
-            // Lưu trữ hình ảnh
-            string fileName = Path.GetFileNameWithoutExtension(image.FileName)
-                            + DateTime.Now.ToString("yyyyMMddHHmmss")
-                            + Path.GetExtension(image.FileName);
-            string filePath = Path.Combine(Server.MapPath("~/Assets/Images/Product"), fileName);
-            image.SaveAs(filePath);
+            try
+            {
+                // Save image to server
+                string fileName = Path.GetFileNameWithoutExtension(image.FileName) + DateTime.Now.ToString("yyyyMMddHHmmss") + Path.GetExtension(image.FileName);
+                string filePath = Path.Combine(Server.MapPath("~/Assets/Images/Product"), fileName);
+                image.SaveAs(filePath);
 
-            pro.Image = fileName; // Lưu tên tệp vào cơ sở dữ liệu
+                // Save product data to database
+                pro.Image = fileName; // Store the image file name
+                db.Products.Add(pro);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.status = -4;
+                ViewBag.Message = $"Failed to save the image: {ex.Message}";
+                return View();
+            }
 
-            db.Products.Add(pro);
-            db.SaveChanges();
-
+            // Redirect to index after successful save
             return Redirect("/shoppingitems/index");
         }
-
-
 
 
 

@@ -1,29 +1,29 @@
 ﻿
 @{
-    ViewBag.Title = "About Us";
-    ViewData["selectedNav"] = "AboutUs";
+    ViewBag.Title = "AboutUs";
+    ViewData["selectedNav"] = "AboutUs_ContactUs";
     Layout = "~/Views/Layout/Layout.cshtml";
 }
 
-<link rel="stylesheet" href="~/Content/myStyle.css" />
+<link href="~/Content/myStyle.css?v=@DateTime.Now.Ticks" rel="stylesheet" />
 
 <div class="bt-form-contact-simple">
     <div class="contact-item">
-        <h2 class="contact-title">Liên hệ với chúng tôi</h2>
+        <h2 class="contact-title">Contact us</h2>
         <form class="form" autocomplete="off">
             <div class="form-group-wrap">
                 <div class="form-group">
                     <input type="text"
                            name="fullName"
                            id="fullName"
-                           placeholder="Họ và tên"
+                           placeholder="FullName"
                            class="form-input" />
                 </div>
                 <div class="form-group">
                     <input type="text"
                            name="phone"
                            id="phone"
-                           placeholder="Số điện thoại"
+                           placeholder="Phone"
                            class="form-input"
                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(..*?)..*/g, '$1');" />
                 </div>
@@ -33,7 +33,7 @@
                     <input type="text"
                            name="address"
                            id="address"
-                           placeholder="Địa chỉ"
+                           placeholder="Address"
                            class="form-input" />
                 </div>
                 <div class="form-group">
@@ -48,34 +48,33 @@
                 <input type="text"
                        name="title"
                        id="title"
-                       placeholder="Tiêu đề"
+                       placeholder="Tittle"
                        class="form-input" />
             </div>
             <div class="form-group">
                 <textarea name="content"
                           id="content"
-                          placeholder="Nội dung"
+                          placeholder="Description"
                           class="form-input form-content"></textarea>
             </div>
             <div class="form-btn-wrap">
                 <button type="submit"
                         id="btnSubmit"
                         class="form-btn form-btn--submit">
-                    Gửi đi
+                    Send
                 </button>
                 <button type="button"
                         id="btnRest"
                         class="form-btn form-btn--reset">
-                    Làm lại
+                    start over
                 </button>
             </div>
         </form>
     </div>
     <div class="contact-item">
-        <h2 class="contact-title">Thông tin</h2>
+        <h2 class="contact-title">Information</h2>
         <p class="desc-info">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore
-            aliquid amet
+            You can go to the address below to experience ABCDMall's services, shopping and food.
         </p>
         <ul class="info-list">
             <li class="info-item">
@@ -92,8 +91,8 @@
                     </svg>
                 </span>
                 <p class="info-text">
-                    <span>Địa chỉ:</span>
-                    Nha Trang, Khánh Hòa, Việt Nam
+                    <span>Address:</span>
+                    No. 01 Hoa Binh Avenue, Tan An Ward, Ninh Kieu District, Can Tho City
                 </p>
             </li>
             <li class="info-item">
@@ -115,8 +114,8 @@
                     </svg>
                 </span>
                 <p class="info-text">
-                    <span>Số điện thoại:</span>
-                    0987654321
+                    <span>Phone:</span>
+                    0292 3688 999
                 </p>
             </li>
             <li class="info-item">
@@ -133,18 +132,17 @@
                     </svg>
                 </span>
                 <p class="info-text">
-                    <span>email:</span>
-                    easytemplate@gmail.com
+                    <span>Email:</span>
+                    plateportal@gmail.com
                 </p>
             </li>
         </ul>
         <div class="google-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124762.63352010043!2d109.16410099715397!3d12.259625609000464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3170677811cc886f%3A0x5c4bbc0aa81edcb9!2zTmhhIFRyYW5nLCBLaMOhbmggSMOyYSwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1669882916464!5m2!1svi!2s"
-                    style="border: 0"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d62860.600150716804!2d105.785555!3d10.034386!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfbe50d7e7b046724!2zU2Vuc2UgQ2l0eSBD4bqnbiBUaMah!5e0!3m2!1svi!2sus!4v1633963208827!5m2!1svi!2sus" width="100%" height="200">
+            </iframe>
         </div>
     </div>
 </div>
 
+
+<script src="~/Scripts/AboutUs/contactus.js"></script>

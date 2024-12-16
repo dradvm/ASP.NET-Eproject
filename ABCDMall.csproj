@@ -160,6 +160,7 @@
       <DependentUpon>ABCDMall.edmx</DependentUpon>
       <LastGenOutput>ABCDMall.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\AboutUs\contactus.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -181,6 +182,7 @@
     <Content Include="Scripts\Movie\index.js" />
     <Content Include="Scripts\Movie\update.js" />
     <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\ShopCenters\filter.js" />
     <Content Include="Scripts\ShopCenters\index.js" />
     <Content Include="Scripts\ShopItems\index.js" />
     <Content Include="Scripts\Showtime\add.js" />
@@ -339,6 +341,7 @@
     <Content Include="Views\Menu\Update.cshtml" />
     <Content Include="Views\Menu\Add.cshtml" />
     <Content Include="Views\Home\MallDiagram.cshtml" />
+    <Content Include="Views\Home\ShopDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
