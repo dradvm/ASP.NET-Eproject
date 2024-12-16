@@ -35,10 +35,10 @@ const chooseSweetBox = (e, money) => {
 const mySubmit = () => {
     form = document.querySelector("#myForm")
     if (document.querySelectorAll('input[id^="seat"]:checked').length == 0) {
-        alert("PLease select at least 1 seat!")
+        alert("Please select at least 1 seat!")
     }
     else if (document.querySelectorAll('input[id^="seat"]:checked') > 8) {
-        alert("You can only select up to 8 seats at a time")
+        alert("You can only select up to 8 seats at a time!")
     }
     else if (!form.reportValidity()) {
 
