@@ -1,13 +1,15 @@
-﻿
+
 @{
     ViewBag.Title = "Diagram";
     ViewData["selectedNav"] = "Malldiagram";
     Layout = "~/Views/Layout/Layout.cshtml";
 }
-
+<header>
+    <link href="~/Content/diagramcss.css?v=@DateTime.Now.Ticks" rel="stylesheet" />
+</header>
 <div class="mall_layout">
     <div class="mall_layout_title">
-        <h1>ABCD Mall Layout</h1>
+        <h1>ABCD Mall Diagram</h1>
     </div>
     <div class="mall_layout_group1">
         <div class="group1_f">Floor 1</div>
@@ -20,14 +22,14 @@
         <div class="group2_title">F1</div>
         <div class="group2_description">description</div>
 
-       
-            <div class="group2_shops">
-                <div class="group2_shops_name">The Face Shop</div>
-                <div class="group2_shops_type">Cosmetics</div>
-                <div class="group2_shops_logo" type="img">the-face-shop-logo.png</div>
-                <div class="group2_shops_menu">Lipstick</div>
-            </div>
-        
+
+        <div class="group2_shops">
+            <div class="group2_shops_name">The Face Shop</div>
+            <div class="group2_shops_type">Cosmetics</div>
+            <div class="group2_shops_logo" type="img">the-face-shop-logo.png</div>
+            <div class="group2_shops_menu">Lipstick</div>
+        </div>
+
 
     </div>
     <div class="mall_layout_group3">
