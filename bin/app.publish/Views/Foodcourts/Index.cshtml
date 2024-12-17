@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Manage Food Court";
+    ViewData["selectedNav"] = "AdminFoodCourts";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+@Html.AntiForgeryToken()
+<a name="" id="" class="btn btn-success" href="@Url.Action("Add", "Foodcourts")" role="button">
+    <i class="fas fa-plus"></i> Add New Food Courts
+</a>
+
+<table class="table table-striped table-bordered" id="shoppingCenters">
+    <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Logo</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ABCDMall.Models.Shop shop in ViewBag.shops)
+        {
+            //if (shop.ShopType.ID == 2)
+            {
+                <tr>
+                    <td>@shop.Name</td>
+                    <td>
+                        <img src="~/Assets/Images/Shop/@shop.Logo" alt="Error" class="img-thumbnail" style="max-width: 100px" />
+                    </td>
+                    <td>@shop.Description</td>
+                    <td>
+
+                        <div class="btn-group" style="gap: 10px;">
+                            <a class="btn btn-primary" href="~/foodcourts/update?id=@shop.ID">Update</a>
+                            <button class="btn btn-danger" onclick="deleteShopEntry('@shop.ID')">Delete </button>
+                         
+                        </div>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<script src="~/Scripts/Foodcourts/index.js"></script>

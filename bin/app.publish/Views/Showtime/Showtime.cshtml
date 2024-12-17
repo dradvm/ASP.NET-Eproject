@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Showtime";
+    ViewData["selectedNav"] = "AdminShowtime";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+@Html.AntiForgeryToken()
+<div class="container d-flex justify-content-between align-items-center my-1">
+    @for (int i = 0; i < 10; i++)
+    {
+        <a href="/showtime/showtime?cinema=@ViewBag.cinema&variance=@i" style="width: 8%" class="bg-white py-1 px-2 rounded-1 @(ViewBag.variance == i ? "border border-2 border-black" : "")">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="fs-7">@DateTime.Now.AddDays(i).Month</div>
+                    <div class="fs-7">@DateTime.Now.AddDays(i).ToString("ddd")</div>
+                </div>
+                <div class="fs-5 fw-bold ">
+                    @DateTime.Now.AddDays(i).Day
+                </div>
+            </div>
+        </a>
+    }
+</div>
+
+
+<table id="showtimes" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Movie</th>
+            <th>Showtime</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ABCDMall.Models.Movie movie in ViewBag.movies)
+        {
+            <tr>
+                <td class="" style="width: 200px;">
+                    <img src="~/Assets/Images/Movie/@movie.Image" class="w-100 h-100" />
+                </td>
+                <td>
+                    <div class="d-flex flex-wrap">
+                        @if (movie.Showtimes != null)
+                        {
+                            foreach (ABCDMall.Models.Showtime showtime in movie.Showtimes)
+                            {
+                                if (showtime.StartingTime.Date == DateTime.Today.AddDays(ViewBag.variance) && showtime.StartingTime > DateTime.Today && showtime.Cinema == ViewBag.cinema)
+                                {
+                                    <div class="border py-1 me-3 text-center border h2 bg-white rounded-1 fs-7" style="width: 100px">
+                                        <div class="fs-7">
+                                            @showtime.StartingTime.ToString("hh:mm tt")
+                                        </div>
+                                        <div class="fs-7">
+                                            @showtime.EndingTime.ToString("hh:mm tt")
+                                        </div>
+                                    </div>
+                                }
+
+                            }
+                        }
+                    </div>
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="/showtime/add?cinema=@ViewBag.cinema&variance=@ViewBag.variance&movie=@movie.ID">Add</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script src="~/Scripts/Showtime/index.js"></script>
+

@@ -1,0 +1,127 @@
+﻿
+@*@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+<form action="/admin/login" method="post">
+    <label for="email">Email:</label>
+    <input name="email" required />
+    <label for="password">Password:</label>
+    <input name="password" type="password" required />
+    @if (ViewBag.status == 0)
+    {
+        <div>Incorrect username or password</div>
+    }
+    <button type="submit">Log in</button>
+</form>*@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Log in</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="~/Content/mycss.css?v=@DateTime.Now.Ticks" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    @Html.AntiForgeryToken()
+    <div class="w-100 vh-100">
+        <img src="~/Assets/Images/bg.png" style="width: 100%; height: 100%;" />
+    </div>
+    <div class="d-flex fixed-top fixed-bottom justify-content-center align-items-center">
+        <div class="bg-white px-4 py-4" style="border-radius: 8px; width: 360px;">
+            <div class="v-stack" >
+                <div class="mb-2 d-flex justify-content-around">
+                    <img src="~/Assets/Images/logo.png" width="100" />
+                </div>
+                <div>
+                    <label for="email" class="form-label fs-7 fw-bold" style="margin-bottom: 0;">Email</label>
+                    <div class="input-group my-input-form">
+                        <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                        <input name="email" type="email" class="form-control" placeholder="Type your email" id="email" asp-for="Email" required>
+                    </div>
+                    <div class="form-text text-danger" id="email-error"></div>
+                </div>
+                <div class="mt-4">
+                    <label for="password" class="form-label fs-7 fw-bold" style="margin-bottom: 0;">Password</label>
+                    <div class="input-group my-input-form">
+                        <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                        <input name="password" type="password" class="form-control" placeholder="Type your password" id="password" asp-for="Password" required>
+                    </div>
+                    <div class="form-text text-danger" id="password-error"></div>
+                </div>
+                <div class="form-text text-danger mt-1" id="error" style="text-align: center;"></div>
+
+                @*<div class="d-flex justify-content-end mt-1">
+                    <a href="/Auth/ForgotPassword" class="text-secondary text-decoration-none fs-7">Forgot password?</a>
+                </div>*@
+                <div class="mb-5 mt-4">
+                    <button type="submit" class="text-decoration-none my-btn w-100 bg-main d-flex align-items-center justify-content-around text-white py-2" onclick="login()">
+                        Login
+                    </button>
+                </div>
+                @*<div class="d-flex justify-content-around">
+                    <div class="d-flex align-items-center">
+                        <div class="fs-7">
+                            Don't have an account?
+                        </div>
+                        <div class="ms-2">
+                            <a asp-action="Signup" class="fs-7 text-main text-main-hover" style="cursor: pointer;">Sign up</a>
+                        </div>
+                    </div>
+                </div>*@
+            </div>
+        </div>
+    </div>
+    <script>
+        function login() {
+            $('#email-error').text('');
+            $('#password-error').text('');
+            $('#error').text('');
+            inputUsername = $('#email').val();
+            inputPassword = $('#password').val();
+            token = $('input[name="__RequestVerificationToken"]').val();
+            valid = true;
+            if (inputUsername.trim().length === 0) {
+                $('#email-error').text("Email can't be empty or filled with spaces");
+                valid = false;
+            }
+            if (inputPassword.trim().length === 0) {
+                $('#password-error').text("Password can't be empty or filled with spaces");
+                valid = false;
+            }
+            if (!valid) {
+                return;
+            }
+            $(document).ready(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: '/admin/login',
+                    data: {
+                        __RequestVerificationToken: token,
+                        email: inputUsername,
+                        password: inputPassword
+                    },
+                    success: function (response) {
+                        if (response === 'Fail') {
+                            $('#error').text("Incorrect email or password");
+                        }
+                        else {
+                            location.href = response;
+                        }
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

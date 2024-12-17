@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ef20fd63690c47e3a6f7957993323886" Name="Diagram1">
+        <EntityTypeShape EntityType="ABCDMallModel.Admin" Width="1.5" PointX="2.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ABCDMallModel.Cinema" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ABCDMallModel.Feedback" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ABCDMallModel.Floor" Width="1.5" PointX="5.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ABCDMallModel.Gallery" Width="1.5" PointX="10.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ABCDMallModel.Genre" Width="1.5" PointX="1.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ABCDMallModel.Movie" Width="1.5" PointX="3.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ABCDMallModel.Product" Width="1.5" PointX="10.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ABCDMallModel.Seat" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ABCDMallModel.SeatType" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ABCDMallModel.Shop" Width="1.5" PointX="8" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ABCDMallModel.ShopType" Width="1.5" PointX="5.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="ABCDMallModel.Showtime" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ABCDMallModel.Ticket" Width="1.5" PointX="8.25" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="ABCDMallModel.FK__Seat__Cinema__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="ABCDMallModel.FK__Showtime__Cinema__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="ABCDMallModel.FK__Shop__Floor__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="ABCDMallModel.FK__Showtime__Movie__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="ABCDMallModel.FK__Product__Shop__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="ABCDMallModel.FK__Seat__SeatType__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="ABCDMallModel.FK__Ticket__Seat__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="ABCDMallModel.FK__Shop__ShopeType__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="ABCDMallModel.FK__Ticket__Showtime__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="ABCDMallModel.MovieGenre" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

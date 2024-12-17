@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Manage Feedback";
+    ViewData["selectedNav"] = "AdminFeedback";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<table id="feedback" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Sending Time</th>
+            <th>Sender</th>
+            <th data-dt-order="disable">Content</th>
+            <th data-dt-order="disable">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ABCDMall.Models.Feedback feedback in ViewBag.feedback)
+        {
+            <tr>
+                <td data-order="@feedback.SendingTime.Ticks">@feedback.SendingTime.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                <td>@feedback.Email</td>
+                <td>@feedback.Content</td>
+                <td>
+                    @if (feedback.Email != null && feedback.Email.Length > 0)
+                    {
+                        <a class="btn btn-primary" target="_blank" href="https://mail.google.com/mail/u/0/?to=@(feedback.Email)&su=ABCDM+Mall+Website+Feedback+Response&body=Dear%20Customer%2C%0A%0AThank%20you%20for%20taking%20the%20time%20to%20share%20your%20feedback%20with%20us.%20We%20truly%20appreciate%20your%20insights%20and%20suggestions%2C%20as%20they%20help%20us%20improve%20our%20services%20and%20better%20meet%20the%20needs%20of%20our%20valued%20customers.%0A%0ABest%20Regards%2C%0AABCD%20Mall&tf=cm">Reply</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script src="~/Scripts/Feedback/index.js"></script>
+

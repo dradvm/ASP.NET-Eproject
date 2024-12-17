@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "ShoppingCenters";
+    ViewData["selectedNav"] = "ShoppingCenters";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+
+<link href="~/Content/myStyle.css?v=@DateTime.Now.Ticks" rel="stylesheet" />
+<div class="container my-5">
+    <div class="row">
+
+        <!-- Cột bên phải -->
+        <div class="col-md-9 mx-auto">
+            <!-- Thanh tìm kiếm -->
+            <div class="d-flex justify-content-between align-items-center bg-secondary p-3 mb-3 ">
+                <input type="text" class="form-control w-75" placeholder="Search content...">
+                <button class="btn btn-primary">Search</button>
+            </div>
+
+            <!-- Danh sách các shop -->
+            <div class="row">
+                <div class="about__card">
+                    @foreach (ABCDMall.Models.Shop shop in ViewBag.shops)
+                    {
+                        <div class="col-md-3 mb-4 about__filter about__card--model" data-name="@shop.Name">
+                            <!-- Adjusted column width -->
+                            <div class="card h-100" style="max-height: 280px;">
+                                <!-- Increased max-height -->
+                                <img src="~/Assets/Images/Shop/@shop.Logo" class="card-img-top" alt="" style="width: 100%; object-fit: scale-down; "> <!-- Increased image height -->
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark">@shop.Name</h5>
+                                </div>
+                                <div class="card-footer bg-white border-0">
+                                    <!-- Dùng Url.Action để tạo liên kết đúng -->
+                                    <a href="@Url.Action("ShopDetails", "Home", new { id = shop.ID })" class="btn btn-primary w-100">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+<script src="~/Scripts/ShopCenters/filter_search.js"></script>

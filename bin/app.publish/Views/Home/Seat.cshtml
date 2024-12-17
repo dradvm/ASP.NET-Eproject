@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "View";
+    ViewData["selectedNav"] = "Movies";
+    Layout = "~/Views/Layout/Layout.cshtml";
+
+    var showtime = ViewBag.showtime as ABCDMall.Models.Showtime;
+}
+
+
+<div class="mx-5 px-5 my-5">
+    <form id="myForm" action="/home/payment" method="POST" class="d-flex vstack border border-2">
+        <input type="hidden" name="showtime" value="@showtime.ID" />
+        <div class="text-center text-white bg-black fw-bold py-2 w-100 fs-5">BOOKING ONLINE</div>
+        <div class="bg-primary text-white px-3 py-1">
+            <div class="fw-bold">
+                Cinema @showtime.Cinema1.Name | Seat (@(showtime.Cinema1.Seats.Count - showtime.Tickets.ToList().Count) / @showtime.Cinema1.Seats.Count)
+            </div>
+            <div class="fw-bold">
+                @showtime.StartingTime.ToString("dd/mm/yyyy HH:mm") ~ @showtime.EndingTime.ToString("dd/mm/yyyy HH:mm")
+
+            </div>
+        </div>
+        <div class="my-5">
+            <div class="d-flex justify-content-around mt-5">
+                <img src="~/Assets/Images/bg-screen.png"/>
+            </div>
+            <div class="d-flex justify-content-around">
+                <div class="mt-5">
+                    @for (int i = 65; i < 72; i++)
+                    {
+                        <div class="d-flex flex-wrap mt-1 justify-content-end">
+                            @foreach (ABCDMall.Models.Seat seat in showtime.Cinema1.Seats)
+                            {
+                                if (seat.Name[0] == i)
+                                {
+                                    <label for="seat@(seat.ID)" >
+                                        <input id="seat@(seat.ID)" name="seats" value="@seat.ID" type="checkbox" class="d-none" @(showtime.Tickets.Any(ticket => ticket.Seat1.ID == seat.ID) ? "disabled" : "")  />
+                                        <div 
+                                             id="seat_check@(seat.ID)" 
+                                             onclick="calcTotal(event, @(showtime.Tickets.Any(ticket => ticket.Seat1.ID == seat.ID) ? 0 : seat.SeatType1.Price));
+                                            @(seat.SeatType1.ID == 3 ? "chooseSweetBox(event, "+ (showtime.Tickets.Any(ticket => ticket.Seat1.ID == seat.ID) ? 0 : seat.SeatType1.Price) +")" : "") " 
+                                             class="seat fs-8 d-flex align-items-center justify-content-around  @(seat.SeatType1.ID == 1 ? "seat-normal" : (seat.SeatType1.ID == 2 ? "seat-vip" : "seat-sweet")) @(showtime.Tickets.Any(ticket => ticket.Seat1.ID == seat.ID) ? "seat-disabled" : "")" 
+                                             style="width: 20px; height: 20px">@seat.Name</div>
+                                    </label>
+                                    <div class="me-1"></div>
+                                }
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="bg-primary text-white px-3 py-3 d-flex align-items-center">
+            <div class="w-25 d-flex">
+                <div class="w-50">
+                    <img src="~/Assets/Images/Movie/@showtime.Movie1.Image" class="w-100 h-100"/>
+                </div>
+                <div class="fw-bold ms-2">
+                    @showtime.Movie1.Name
+                </div>
+            </div>
+            <div class="w-25">
+            </div>
+            <div class="w-25 fw-bold">
+                <label for="basic-url" class="form-label">Your Name</label>
+                <div class="input-group mb-3">
+                    <input required name="name" type="text" class="form-control" placeholder="Name" aria-label="name" aria-describedby="basic-addon1">
+                </div>
+                <label for="basic-url" class="form-label">Email</label>
+                <div class="input-group mb-3">
+                    <input required name="email" type="email" class="form-control" placeholder="Email" aria-label="email" aria-describedby="basic-addon1">
+                </div>
+                Total: <span id="total-text"></span>
+                <input name="total" id="total" value="0" type="hidden" />
+            </div>
+            <div class="w-25 d-flex align-items-center justify-content-around">
+                <button type="button" class="bg-white rounded-2 p-3 text-main border border-2" onclick="mySubmit()">
+                    <i class="fa-regular fa-credit-card fs-1"></i>
+                    <div class="fw-bold">Payment</div>
+                </button>
+            </div>
+        </div>
+    </form>
+    <script src="~/Scripts/Home/seat.js"></script>
+</div>

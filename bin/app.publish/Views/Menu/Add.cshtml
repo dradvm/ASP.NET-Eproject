@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Add New Menu";
+    ViewData["selectedNav"] = "AdminMenu";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<div class="px-4 pt-4">
+    <form method="post" action="/menu/add" enctype="multipart/form-data" class="d-flex justify-content-between align-items-center">
+        @Html.AntiForgeryToken()
+
+        <div style="width: 30%">
+            <div class="vstack gap-3">
+                <div class="w-100" style="height: 300px; border: 1px solid #ccc;">
+                    <img id="preview" src="~/Assets/Images/empty.jpg" class="w-100 h-100" style="object-fit: contain;" />
+                </div>
+                <input class="d-none" id="Logo" name="image" type="file" accept="image/*" onchange="loadImagePreview()" />
+                <button type="button" class="my-btn bg-main text-white px-3 py-1 rounded-1 mt-3" onclick="triggerFileInput()">Select Image</button>
+            </div>
+        </div>
+
+        <div style="width: 60%">
+            <div class="d-flex justify-content-between">
+                <div style="width: 48%">
+                    <label for="shop" class="form-label fs-7 fw-bold" style="margin-bottom: 0;">Shop</label>
+                    <div class="input-group my-input-form">
+                        <select class="form-select" name="ShopID" id="shop" required>
+                            <option value="" selected disabled>-- Select Shop Type --</option>
+
+
+                            @foreach (var shop in (IEnumerable<SelectListItem>)ViewBag.menu)
+
+                            {
+                                <option value="@shop.Value">@shop.Text</option>
+                            }
+
+                        </select>
+                    </div>
+                </div>
+
+                <div style="width: 48%">
+                    <label for="Name" class="form-label fs-7 fw-bold" style="margin-bottom: 0;">Name</label>
+                    <div class="input-group my-input-form">
+                        <span class="input-group-text"><i class="fa-solid fa-shop"></i></span>
+                        <input name="Name" type="text" class="form-control" placeholder="Name" required />
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3">
+                <label for="Description" class="form-label fs-7 fw-bold">Description</label>
+                <textarea class="form-control" name="Description" id="Description" rows="3" required></textarea>
+            </div>
+
+            <div class="text-danger mt-3">
+                @if (ViewBag.status != null)
+                {
+                    if (ViewBag.status == 0)
+                    {
+                        <div>An image must be chosen</div>
+                    }
+                    else if (ViewBag.status == -1)
+                    {
+                        <div>Image size must be less than 10MB</div>
+                    }
+                    else if (ViewBag.status == -2)
+                    {
+                        <div>The chosen image format is not supported</div>
+                    }
+                }
+            </div>
+
+            <button type="submit" class="w-100 mt-3 text-decoration-none my-btn bg-main text-white px-3 py-1 rounded-1">
+                Add
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function triggerFileInput() {
+        document.getElementById("Logo").click();
+    }
+
+    function loadImagePreview() {
+        const input = document.getElementById("Logo");
+        const preview = document.getElementById("preview");
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

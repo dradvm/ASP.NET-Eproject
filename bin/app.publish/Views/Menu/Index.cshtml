@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Manage Menu";
+    ViewData["selectedNav"] = "AdminMenu";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<a name="" id="" class="btn btn-success" href="@Url.Action("Add", "menu")" role="button">
+    <i class="fas fa-plus"></i> Add New Menu
+</a>
+@Html.AntiForgeryToken()
+<table class="table table-striped table-bordered" id="menuFoodcourts">
+    <thead class="thead-dark">
+        <tr>
+
+            <th>Name</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ABCDMall.Models.Product pro in ViewBag.products)
+        {
+            <tr>
+
+                <td style="width:20%"> @pro.Name </td>
+                <td style="width:20%">
+                    <img src="~/Assets/Images/Product/@pro.Image" alt="Error" class="img-thumbnail" style="max-width: 100px" />
+                </td>
+                <td style="width:50%">@pro.Description</td>
+                <td>
+                    <div class="btn-group" style="gap: 10px;">
+                        <a class="btn btn-primary" href="/menu/update?id=@pro.ID">Update</a>
+                        <button class="btn btn-danger" onclick="deleteMenuEntry('@pro.ID')">Delete</button>
+                    </div>
+
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+<script src="~/Scripts/Menu/index.js"></script>

@@ -1,0 +1,112 @@
+﻿/* Layout container */
+.mall_layout {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Title */
+.mall_layout_title h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+/* Group 1 - Floors */
+.mall_layout_group1 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.group1_f {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+    .group1_f:hover {
+        background-color: #0056b3;
+    }
+
+/* Group 2 - Sections */
+.mall_layout_group2 {
+    margin-bottom: 30px;
+    text-align: center; /* Canh giữa nội dung của group2 */
+}
+
+.group2_title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.group2_description {
+    font-size: 16px;
+    margin-top: 5px;
+    color: #555;
+}
+
+.group2_shops {
+    display: flex;
+    justify-content: center; /* Canh giữa các shop */
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.group2_shops_name {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 120px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+    .group2_shops_name:hover {
+        background-color: #e2e6ea;
+    }
+
+/* Group 3 - Menu */
+.mall_layout_group3 {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center; /* Canh giữa toàn bộ nội dung của group3 */
+    flex-direction: column; /* Các phần tử theo chiều dọc */
+}
+
+.group3_menu {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center; /* Canh giữa tiêu đề menu */
+}
+
+/* Sửa phần các sản phẩm */
+.group3_menu_items {
+    display: flex; /* Sắp xếp các sản phẩm theo chiều ngang */
+    justify-content: center; /* Canh giữa các sản phẩm */
+    gap: 20px; /* Khoảng cách giữa các sản phẩm */
+    flex-wrap: wrap; /* Để các sản phẩm xuống dòng khi không đủ không gian */
+}
+
+.group3_menu_item {
+    background-color: #f1f1f1;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    width: 120px;
+}
+
+    .group3_menu_item:hover {
+        background-color: #e9ecef;
+    }
