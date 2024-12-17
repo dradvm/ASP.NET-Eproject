@@ -72,15 +72,24 @@ namespace ABCDMall.Controllers
             // Trả về view với dữ liệu shop
             return View(shop);
         }
+
+
+
+
+
         public ActionResult Foodcourts()
         {
-            ViewData["selectedNav"] = "Foodcourts";
-            ViewBag.shops = db.Products
-                              .Include(s => s.Shop1) // Nạp dữ liệu của ShopType
-                              .Where(s => s.Shop1.ID == 6)
+            ViewData["selectedNav"] = "ShoppingCenters";
+            ViewBag.shops = db.Shops
+                              .Include(s => s.ShopType) // Nạp dữ liệu của ShopType
+                              .Where(s => s.ShopType.ID == 2)
                               .ToList();
             return View();
         }
+
+
+
+
 
         public ActionResult Malldiagram()
         {
