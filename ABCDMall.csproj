@@ -170,7 +170,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\Feedback\index.js" />
-    <Content Include="Scripts\Foodcourts\filter.js" />
+    <Content Include="Scripts\Foodcourts\search_foodcourts.js" />
     <Content Include="Scripts\Foodcourts\index.js" />
     <Content Include="Scripts\Gallery\add.js" />
     <Content Include="Scripts\Gallery\update.js" />

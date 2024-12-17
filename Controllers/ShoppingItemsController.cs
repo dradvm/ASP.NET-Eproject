@@ -34,7 +34,7 @@ namespace ABCDMall.Controllers
         [AdminFilter]
         public ActionResult Add(int status = 1)
         {
-            var shop = db.Shops.ToList(); // Fetch list of shops from the database
+            var shop = db.Shops.Where(item => item.ShopeType == 1).ToList(); // Fetch list of shops from the database
             var shopItems = shop.Select(st => new SelectListItem
             {
                 Value = st.ID.ToString(), // Shop ID
