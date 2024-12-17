@@ -9,23 +9,9 @@
 <link href="~/Content/myStyle.css?v=@DateTime.Now.Ticks" rel="stylesheet" />
 <div class="container my-5">
     <div class="row">
-        <!-- Cột bên trái -->
-        <div class="col-md-3 bg-light border-end">
-            <h4 class="py-3 text-primary">Filter</h4>
-            <h6 class="text-secondary">Shopping Centers</h6>
-            <ul class="list-unstyled">
-                <li><a href="#" class="filter-item text-dark fw-bold text-decoration-none" class="text-secondary" data-name="all">
-                        <p class="text-secondary--add">Show all</p></a></li>
-                @foreach (ABCDMall.Models.Shop shop in ViewBag.shops)
-                {
-                    <li><a href="#" class="filter-item text-dark fw-bold text-decoration-none" data-name="@shop.Name">@shop.Name</a></li>
-                }
-            </ul>
-        </div>
-
 
         <!-- Cột bên phải -->
-        <div class="col-md-9">
+        <div class="col-md-9 mx-auto">
             <!-- Thanh tìm kiếm -->
             <div class="d-flex justify-content-between align-items-center bg-secondary p-3 mb-3 ">
                 <input type="text" class="form-control w-75" placeholder="Search content...">
