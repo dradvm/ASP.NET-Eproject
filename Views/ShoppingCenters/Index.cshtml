@@ -15,7 +15,6 @@
 <table class="table table-striped table-bordered" id="shoppingCenters">
     <thead class="thead-dark">
         <tr>
-            <th>ShopeType</th>
             <th>Floor</th>
             <th>Name</th>
             <th>Logo</th>
@@ -27,7 +26,6 @@
         @foreach (ABCDMall.Models.Shop shop in ViewBag.shops)
         {
             <tr>
-                <td>@shop.ShopType.Name</td>  <!-- Lấy tên ShopType thay vì ID -->
                 <td>@shop.Floor</td>
                 <td>@shop.Name</td>
                 <td>

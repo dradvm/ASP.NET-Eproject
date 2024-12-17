@@ -44,7 +44,7 @@ namespace ABCDMall.Controllers
         [AdminFilter]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Add(string name, HttpPostedFileBase logo, int shopTypeID, int floor, string description)
+        public ActionResult Add(string name, HttpPostedFileBase logo, int floor, string description)
         {
             Shop shop = new Shop
             {

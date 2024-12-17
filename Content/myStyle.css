@@ -49,8 +49,10 @@
 }
 
 .card-img-top {
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+    width: 100%; /* Chiều rộng đầy đủ */
+    height: 170px; /* Chiều cao cố định */
+    object-fit: contain; /* Hiển thị toàn bộ ảnh không bị xén */
+    background-color: #f8f9fa; /* Màu nền cho khoảng trống */
 }
 
 .card-footer .btn {
