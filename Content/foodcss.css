@@ -1,84 +1,87 @@
-﻿/* Container */
-.pro-container {
-    width: 90%;
-    margin: auto;
+.about__card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Khoảng cách giữa các thẻ */
+    justify-content: flex-start; /* Căn chỉnh các thẻ bắt đầu từ trái */
+}
+
+.about__filter {
+    width: calc(25% - 20px); /* Đảm bảo 4 cột trên mỗi hàng */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Tạo hiệu ứng bóng */
+    transition: transform 0.2s ease-in-out;
+}
+
+    .about__filter:hover {
+        transform: scale(1.05); /* Hiệu ứng phóng to khi hover */
+    }
+
+.card {
+    border-radius: 8px; /* Góc bo tròn cho card */
+    overflow: hidden;
+    border: 1px solid #e0e0e0; /* Đường viền nhẹ */
+}
+
+.card-img-top {
+    border-bottom: 1px solid #e0e0e0; /* Viền chia cách giữa ảnh và nội dung */
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+}
+
+.card-footer a {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+/* Đặt canh giữa toàn bộ phần tử cha */
+.about__card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc (nếu cần) */
+    text-align: center; /* Đảm bảo nội dung chữ cũng căn giữa */
+}
+
+/* Card cụ thể */
+.about__filter {
+    width: calc(25% - 20px); /* Chiều rộng mỗi card (4 card trên một hàng) */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa nội dung bên trong */
+    justify-content: space-between; /* Tách phần nội dung và footer */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    text-align: center;
+}
+
+    .about__filter:hover {
+        transform: scale(1.05);
+    }
+
+/* Card hình ảnh */
+.card-img-top {
+    height: 170px;
+    object-fit: cover;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 /* Tiêu đề */
-.pro-text-center {
+.card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Footer button */
+.card-footer a {
+    width: 100%; /* Đảm bảo nút full-width */
+    text-transform: uppercase;
+    font-weight: bold;
+    display: block;
     text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-    color: #333;
 }
 
-/* Lưới sản phẩm */
-.pro-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1.5rem;
-}
-
-/* Cột sản phẩm */
-.pro-col-md-4 {
-    flex: 1 1 calc(33.333% - 1.5rem); /* 3 sản phẩm mỗi hàng */
-    box-sizing: border-box;
-}
-
-@media (max-width: 768px) {
-    .pro-col-md-4 {
-        flex: 1 1 calc(50% - 1rem); /* 2 sản phẩm mỗi hàng trên màn hình nhỏ */
-    }
-}
-
-@media (max-width: 576px) {
-    .pro-col-md-4 {
-        flex: 1 1 100%; /* 1 sản phẩm mỗi hàng trên màn hình rất nhỏ */
-    }
-}
-
-/* Card sản phẩm */
-.pro-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-    .pro-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-/* Hình ảnh */
-.pro-card-img-top {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 1px solid #ddd;
-}
-
-/* Nội dung card */
-.pro-card-body {
-    padding: 1rem;
-}
-
-.pro-card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    color: #333;
-}
-
-.pro-card-text {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 0.5rem;
-}
-
-.pro-text-muted {
-    color: #999;
-}
