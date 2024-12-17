@@ -39,7 +39,7 @@
                         <a class="btn btn-primary" href="/movie/update?id=@movie.ID">Update</a>
                         @if (movie.Showtimes.Any(showtime => showtime.Tickets.Count > 0))
                         {
-                        <button class="btn btn-danger" onclick="disableMovie('@movie.ID')">Disable</button>
+                        <button class="btn btn-danger" onclick="disableMovie('@movie.ID')">Delete</button>
                         }
                         else
                         {
