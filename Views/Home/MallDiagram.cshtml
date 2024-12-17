@@ -9,33 +9,148 @@
 </header>
 <div class="mall_layout">
     <div class="mall_layout_title">
-        <h1>ABCD Mall Diagram</h1>
+        <h1>ABCD Mall Layout</h1>
     </div>
-    <div class="mall_layout_group1">
+
+    <!-- Group 1: Floors -->
+    <div class="mall_layout_group1" id="floors">
         <div class="group1_f">Floor 1</div>
         <div class="group1_f">Floor 2</div>
         <div class="group1_f">Floor 3</div>
         <div class="group1_f">Floor 4</div>
     </div>
 
-    <div class="mall_layout_group2">
-        <div class="group2_title">F1</div>
-        <div class="group2_description">description</div>
-
-
-        <div class="group2_shops">
-            <div class="group2_shops_name">The Face Shop</div>
-            <div class="group2_shops_type">Cosmetics</div>
-            <div class="group2_shops_logo" type="img">the-face-shop-logo.png</div>
-            <div class="group2_shops_menu">Lipstick</div>
-        </div>
-
-
+    <!-- Group 2: Shops -->
+    <div class="mall_layout_group2" id="sections">
+        <!-- Sections will be dynamically added here -->
     </div>
-    <div class="mall_layout_group3">
-        <div class="group3_menu">Menu of The Pizza Company</div>
-        <div>
-            <div class="group3_menu_item">Chickenjoy</div>
-        </div>
+
+    <!-- Group 3: Menu -->
+    <div class="mall_layout_group3" id="menus">
+        <!-- Menu will be dynamically added here -->
     </div>
 </div>
+
+<script>
+    // Load sections when a floor is clicked
+    document.querySelectorAll('.group1_f').forEach((floorButton) => {
+        floorButton.addEventListener('click', function () {
+            loadSections(this.innerText);
+        });
+    });
+
+    function loadSections(floorName) {
+        const sectionsContainer = document.getElementById('sections');
+        sectionsContainer.innerHTML = ''; // Clear old sections
+
+        // Simulate section and menu data
+        const sections = [
+            { name: 'F1 - Fashion', description: 'Fashion stores', floor: 'Floor 1', shops: ['The Face Shop', 'Zara', 'H&M'] },
+            { name: 'F2 - Electronics', description: 'Electronics stores', floor: 'Floor 2', shops: ['Samsung', 'Apple', 'Sony'] },
+            { name: 'F3 - Food Court', description: 'Restaurants and cafes', floor: 'Floor 3', shops: ['The Pizza Company', 'Starbucks', 'Burger King'] },
+            { name: 'F4 - Entertainment', description: 'Cinema, Games', floor: 'Floor 4', shops: ['Cineplex', 'Game Center'] }
+        ];
+
+        const floorSections = sections.filter(section => section.floor === floorName);
+
+        floorSections.forEach((section) => {
+            const sectionDiv = document.createElement('div');
+            sectionDiv.classList.add('group2_title');
+            sectionDiv.textContent = section.name;
+
+            const descriptionDiv = document.createElement('div');
+            descriptionDiv.classList.add('group2_description');
+            descriptionDiv.textContent = section.description;
+
+            const shopsContainer = document.createElement('div');
+            shopsContainer.classList.add('group2_shops');
+
+            // Create shops in the section
+            section.shops.forEach((shop) => {
+                const shopDiv = document.createElement('div');
+                shopDiv.classList.add('group2_shops_name');
+                shopDiv.textContent = shop;
+                shopDiv.addEventListener('click', function () {
+                    loadMenu(shop);
+                });
+                shopsContainer.appendChild(shopDiv);
+            });
+
+            sectionsContainer.appendChild(sectionDiv);
+            sectionsContainer.appendChild(descriptionDiv);
+            sectionsContainer.appendChild(shopsContainer);
+        });
+    }
+
+    // Load menu when a shop is clicked
+    function loadMenu(shopName) {
+        const menusContainer = document.getElementById('menus');
+        menusContainer.innerHTML = ''; // Clear old menu
+
+        const menuData = {
+            'The Face Shop': ['Lipstick', 'Foundation', 'Mascara'],
+            'Zara': ['Shirts', 'Pants', 'Shoes'],
+            'H&M': ['Jackets', 'Sweaters', 'T-shirts'],
+            'Samsung': ['Galaxy S', 'Galaxy Note', 'Tablets'],
+            'Apple': ['iPhone', 'MacBook', 'iPad'],
+            'Sony': ['Headphones', 'Speakers', 'Cameras'],
+            'The Pizza Company': ['Chickenjoy', 'Pizza', 'Pasta'],
+            'Starbucks': ['Coffee', 'Tea', 'Cakes'],
+            'Burger King': ['Whopper', 'Fries', 'Salads'],
+            'Cineplex': ['Movies', '3D', 'IMAX'],
+            'Game Center': ['Arcade', 'VR Games', 'Basketball']
+        };
+
+        const menuItems = menuData[shopName] || [];
+
+        const menuTitle = document.createElement('div');
+        menuTitle.classList.add('group3_menu');
+        menuTitle.textContent = `Menu of ${shopName}`;
+
+        menuItems.forEach((item) => {
+            const menuItem = document.createElement('div');
+            menuItem.classList.add('group3_menu_item');
+            menuItem.textContent = item;
+            menusContainer.appendChild(menuItem);
+        });
+
+        menusContainer.prepend(menuTitle);
+    }
+    function loadMenu(shopName) {
+        const menusContainer = document.getElementById('menus');
+        menusContainer.innerHTML = ''; // Clear old menu
+
+        const menuData = {
+            'The Face Shop': ['Lipstick', 'Foundation', 'Mascara'],
+            'Zara': ['Shirts', 'Pants', 'Shoes'],
+            'H&M': ['Jackets', 'Sweaters', 'T-shirts'],
+            'Samsung': ['Galaxy S', 'Galaxy Note', 'Tablets'],
+            'Apple': ['iPhone', 'MacBook', 'iPad'],
+            'Sony': ['Headphones', 'Speakers', 'Cameras'],
+            'The Pizza Company': ['Chickenjoy', 'Pizza', 'Pasta'],
+            'Starbucks': ['Coffee', 'Tea', 'Cakes'],
+            'Burger King': ['Whopper', 'Fries', 'Salads'],
+            'Cineplex': ['Movies', '3D', 'IMAX'],
+            'Game Center': ['Arcade', 'VR Games', 'Basketball']
+        };
+
+        const menuItems = menuData[shopName] || [];
+
+        const menuTitle = document.createElement('div');
+        menuTitle.classList.add('group3_menu');
+        menuTitle.textContent = `Menu of ${shopName}`;
+
+        const menuItemsContainer = document.createElement('div');
+        menuItemsContainer.classList.add('group3_menu_items');
+
+        menuItems.forEach((item) => {
+            const menuItem = document.createElement('div');
+            menuItem.classList.add('group3_menu_item');
+            menuItem.textContent = item;
+            menuItemsContainer.appendChild(menuItem);
+        });
+
+        menusContainer.appendChild(menuTitle);
+        menusContainer.appendChild(menuItemsContainer);
+    }
+</script>

@@ -30,14 +30,17 @@ namespace ABCDMall.Controllers
         [AdminFilter]
         public ActionResult Add(int status = 1)
         {
-            var shop = db.Shops.ToList(); // Lấy danh sách các ShopType từ database
+            var shop = db.Shops
+                         .Where(st => st.ShopType.ID == 2)
+                         .ToList();
+            // Lấy danh sách các ShopType từ database
             var shopItems = shop.Select(st => new SelectListItem
             {
                 Value = st.ID.ToString(), // Giá trị của SelectListItem là ID của Shop
                 Text = st.Name // Hiển thị tên ShopID trong dropdown
             }).ToList();
 
-            ViewBag.products = shopItems; // Gán vào ViewBag để truyền sang View
+            ViewBag.menu = shopItems; // Gán vào ViewBag để truyền sang View
             return View();
         }
 
@@ -54,26 +57,26 @@ namespace ABCDMall.Controllers
             // Kiểm tra tên sản phẩm
             if (string.IsNullOrEmpty(pro.Name))
             {
-                return Redirect("/products/add?status=0");
+                return Redirect("/menu/add?status=0");
             }
 
             // Kiểm tra hình ảnh
             if (image == null || image.ContentLength == 0)
             {
-                return Redirect("/products/add?status=-1");
+                return Redirect("/menu/add?status=-1");
             }
 
             // Kiểm tra định dạng hình ảnh
             string[] supported = { ".png", ".jpg", ".jpeg", ".svg" };
             if (!supported.Any(format => string.Equals(format, Path.GetExtension(image.FileName), StringComparison.OrdinalIgnoreCase)))
             {
-                return Redirect("/products/add?status=-2");
+                return Redirect("/menu/add?status=-2");
             }
 
             // Kiểm tra kích thước hình ảnh
             if (image.ContentLength > 10000000) // 10MB
             {
-                return Redirect("/products/add?status=-3");
+                return Redirect("/menu/add?status=-3");
             }
 
             // Lưu trữ hình ảnh
@@ -88,7 +91,7 @@ namespace ABCDMall.Controllers
             db.Products.Add(pro);
             db.SaveChanges();
 
-            return Redirect("/products/index");
+            return Redirect("/menu/index");
         }
 
 
@@ -110,7 +113,9 @@ namespace ABCDMall.Controllers
             }
 
             // Lấy danh sách các loại cửa hàng từ database
-            var shop = db.Shops.ToList();
+            var shop = db.Shops
+                              .Where(st => st.ShopType.ID == 2)
+                              .ToList();
             var shopItems = shop.Select(st => new SelectListItem
             {
                 Value = st.ID.ToString(),
@@ -118,7 +123,7 @@ namespace ABCDMall.Controllers
             }).ToList();
 
             // Truyền dữ liệu vào ViewBag
-            ViewBag.products = shopItems; // Danh sách các loại cửa hàng
+            ViewBag.menu = shopItems; // Danh sách các loại cửa hàng
             ViewBag.status = status; // Trạng thái trả về từ POST
 
             return View(pro); // Truyền đối tượng Shop vào View
@@ -140,13 +145,13 @@ namespace ABCDMall.Controllers
             // Kiểm tra và cập nhật các trường dữ liệu
             if (string.IsNullOrEmpty(name?.Trim()))
             {
-                return Redirect($"/products/update/{id}?status=0"); // Kiểm tra tên cửa hàng
+                return Redirect($"/menu/update/{id}?status=0"); // Kiểm tra tên cửa hàng
             }
             pro.Name = name.Trim();
 
             if (string.IsNullOrEmpty(description?.Trim()))
             {
-                return Redirect($"/products/update/{id}?status=-6"); // Kiểm tra mô tả
+                return Redirect($"/menu/update/{id}?status=-6"); // Kiểm tra mô tả
             }
             pro.Description = description.Trim();
 
@@ -159,12 +164,12 @@ namespace ABCDMall.Controllers
                 string[] supported = { ".png", ".jpg", ".jpeg", ".svg" };
                 if (!supported.Any(format => string.Equals(format, Path.GetExtension(image.FileName), StringComparison.OrdinalIgnoreCase)))
                 {
-                    return Redirect($"/products/update/{id}?status=-2"); // Kiểm tra định dạng ảnh
+                    return Redirect($"/menu/update/{id}?status=-2"); // Kiểm tra định dạng ảnh
                 }
 
                 if (image.ContentLength > 10000000)
                 {
-                    return Redirect($"/products/update/{id}?status=-3"); // Kiểm tra kích thước ảnh
+                    return Redirect($"/menu/update/{id}?status=-3"); // Kiểm tra kích thước ảnh
                 }
 
                 // Xóa ảnh cũ (nếu có)
@@ -182,7 +187,7 @@ namespace ABCDMall.Controllers
             // Lưu thay đổi vào cơ sở dữ liệu
             db.SaveChanges();
 
-            return Redirect("/products/index"); // Điều hướng về trang danh sách
+            return Redirect("/menu/index"); // Điều hướng về trang danh sách
         }
 
 

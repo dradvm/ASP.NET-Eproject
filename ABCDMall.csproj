@@ -147,6 +147,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\diagramcss.css" />
+    <Content Include="Content\foodcss.css" />
     <Content Include="Content\mycss.css" />
     <Content Include="Content\myStyle.css" />
     <Content Include="Global.asax" />
@@ -169,7 +170,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\Feedback\index.js" />
-    <Content Include="Scripts\Foodcourts\Index.js" />
+    <Content Include="Scripts\Foodcourts\filter.js" />
+    <Content Include="Scripts\Foodcourts\index.js" />
     <Content Include="Scripts\Gallery\add.js" />
     <Content Include="Scripts\Gallery\update.js" />
     <Content Include="Scripts\Gallery\index.js" />
@@ -178,6 +180,7 @@
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
+    <Content Include="Scripts\Menu\index.js" />
     <Content Include="Scripts\Movie\add.js" />
     <Content Include="Scripts\Movie\index.js" />
     <Content Include="Scripts\Movie\update.js" />
@@ -335,13 +338,14 @@
     <Content Include="Views\ShoppingCenters\Update.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Foodcourts\Add.cshtml" />
-    <Content Include="Views\Foodcourts\Uppdate.cshtml" />
     <Content Include="Views\Foodcourts\Index.cshtml" />
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\Menu\Update.cshtml" />
     <Content Include="Views\Menu\Add.cshtml" />
     <Content Include="Views\Home\MallDiagram.cshtml" />
     <Content Include="Views\Home\ShopDetails.cshtml" />
+    <Content Include="Views\Foodcourts\Update.cshtml" />
+    <Content Include="Views\Home\Foodcourts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,84 @@
+﻿/* Container */
+.pro-container {
+    width: 90%;
+    margin: auto;
+}
+
+/* Tiêu đề */
+.pro-text-center {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+/* Lưới sản phẩm */
+.pro-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+/* Cột sản phẩm */
+.pro-col-md-4 {
+    flex: 1 1 calc(33.333% - 1.5rem); /* 3 sản phẩm mỗi hàng */
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .pro-col-md-4 {
+        flex: 1 1 calc(50% - 1rem); /* 2 sản phẩm mỗi hàng trên màn hình nhỏ */
+    }
+}
+
+@media (max-width: 576px) {
+    .pro-col-md-4 {
+        flex: 1 1 100%; /* 1 sản phẩm mỗi hàng trên màn hình rất nhỏ */
+    }
+}
+
+/* Card sản phẩm */
+.pro-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .pro-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+/* Hình ảnh */
+.pro-card-img-top {
+    width: 20%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Nội dung card */
+.pro-card-body {
+    padding: 1rem;
+}
+
+.pro-card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.pro-card-text {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+.pro-text-muted {
+    color: #999;
+}

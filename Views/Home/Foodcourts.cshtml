@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Foodcourts";
+    ViewData["selectedNav"] = "Foodcourts";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+<link href="~/Content/foodcss.css?v=@DateTime.Now.Ticks" rel="stylesheet" />
+
+<div class="pro-container mt-4">
+    <h1 class="pro-text-center">Danh sách sản phẩm</h1>
+    <div class="pro-row">
+        @foreach (ABCDMall.Models.Product pro in ViewBag.shops)
+        {
+            <div class="pro-col-md-4 pro-mb-4">
+                <div class="pro-card">
+                    <img  src="~/Assets/Images/Product/@pro.Image"  class="pro-card-img-top" alt="@pro.Name" />
+                    <div class="pro-card-body">
+                        <h5 class="pro-card-title">@pro.Name</h5>
+                        @*<p class="pro-card-text">@pro.Description</p>*@
+                        @*<p class="pro-card-text"><small class="pro-text-muted">Shop ID: @pro.Shop</small></p>*@
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@*<script src="~/Scripts/Foodcourts/filter.js"></script>*@

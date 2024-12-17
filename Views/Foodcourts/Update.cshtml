@@ -1,5 +1,5 @@
-@{
-    ViewBag.Title = "Update Food Courts";
+﻿@{
+    ViewBag.Title = "Update Food Court";
     ViewData["selectedNav"] = "AdminFoodCourts";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
@@ -23,25 +23,17 @@
 
         <div style="width: 60%">
             <div class="d-flex justify-content-between">
-                <div style="width: 48%">
-                    <label for="shop_type" class="form-label fs-7 fw-bold" style="margin-bottom: 0;">Shop Type</label>
-                    <div class="input-group my-input-form">
-                        <select class="form-select" name="ShopTypeID" id="shop_type" required>
-                            <option value="" selected disabled>-- Select Shop Type --</option>
-                            @foreach (var shop in (IEnumerable<SelectListItem>)ViewBag.shops)
-                            {
-                                <option value="@shop.Value" @(shop.Value == Model.ShopType.ID.ToString() ? "selected" : "")>@shop.Text</option>
-
-                            }
-                        </select>
-                    </div>
-                </div>
-
-                <div style="width: 48%">
+                <div style="width: 90%">
                     <label for="Name" class="form-label fs-7 fw-bold" style="margin-bottom: 0;">Name</label>
                     <div class="input-group my-input-form">
                         <span class="input-group-text"><i class="fa-solid fa-shop"></i></span>
                         <input name="Name" type="text" class="form-control" placeholder="Name" value="@Model.Name" required />
+                    </div>
+                </div>
+                <div style="width: 10%">
+                    <div class="input-group my-input-form ">
+                        <span class="input-group-text"><i class="fa-solid fa-shop"></i></span>
+                        <input type="hidden" name="ShopTypeID" value="2" />
                     </div>
                 </div>
             </div>
@@ -89,8 +81,7 @@
     </form>
 </div>
 
-<script>
-    function triggerFileInput() {
+<script>function triggerFileInput() {
         document.getElementById("Logo").click();
     }
 
@@ -104,6 +95,5 @@
             };
             reader.readAsDataURL(input.files[0]);
         }
-    }
-</script>
+    }</script>
 

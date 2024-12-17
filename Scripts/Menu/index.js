@@ -1,7 +1,7 @@
 ﻿//xử lý phân trang
 
 $(document).ready(() => {
-    $('#foodcourts').DataTable({
+    $('#menuFoodcourts').DataTable({
         order: [[4, 'asc']], // Sắp xếp mặc định theo cột đầu tiên (Shop Type)
     });
 });
@@ -10,11 +10,11 @@ $(document).ready(() => {
 
 
 //xử lý delete Shopping center
-function deleteShopEntry(id) {
-    if (confirm("Are you sure you want to delete this Food Court?")) {
+function deleteMenuEntry(id) {
+    if (confirm("Are you sure you want to delete this menu Food Court?")) {
         var token = $('input[name="__RequestVerificationToken"]').val();
         $.ajax({
-            url: '/foodcourts/delete',
+            url: '/menu/delete',
             type: 'POST',
             data:
             {
