@@ -185,9 +185,8 @@
     <Content Include="Scripts\Movie\index.js" />
     <Content Include="Scripts\Movie\update.js" />
     <Content Include="Scripts\popper.js" />
-    <Content Include="Scripts\ShopCenters\filter.js" />
+    <Content Include="Scripts\ShopCenters\filter_search.js" />
     <Content Include="Scripts\ShopCenters\index.js" />
-    <Content Include="Scripts\ShopCenters\search.js" />
     <Content Include="Scripts\ShopItems\index.js" />
     <Content Include="Scripts\Showtime\add.js" />
     <Content Include="Scripts\Showtime\index.js" />
